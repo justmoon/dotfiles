@@ -1,0 +1,33 @@
+---
+- name: Updating cache
+  become: true
+  pacman:
+    update_cache: true
+  tags:
+    - molecule-idempotence-notest
+
+- name: Installing dependencies
+  become: true
+  pacman:
+    name: base-devel
+
+- name: Creating aur_builder
+  become: true
+  user:
+    name: "aur_builder"
+    group: wheel
+
+- name: Giving passwordless access to pacman
+  become: true
+  lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    create: true
+    validate: 'visudo -cf %s'
+
+- name: Installing yay
+  become: true
+  become_user: "aur_builder"
+  kewlfft.aur.aur:
+    name: yay
+    use: makepkg
