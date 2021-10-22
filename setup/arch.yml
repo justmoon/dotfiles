@@ -1,3 +1,5 @@
 - hosts: all
   roles:
+    - arch/cli-utils
     - arch/docker
+    - arch/go

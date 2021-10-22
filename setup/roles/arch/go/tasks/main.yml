@@ -1,0 +1,5 @@
+- name: Install Golang
+  community.general.pacman:
+    name: go
+    state: present
+

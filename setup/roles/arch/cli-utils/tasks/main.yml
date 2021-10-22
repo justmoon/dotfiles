@@ -1,0 +1,16 @@
+- name: Install CLI utilities
+  community.general.pacman:
+    name:
+      - httpie
+      - the_silver_searcher
+      - htop
+      - fzf
+      - fasd
+      - pwgen
+      - wget
+      - strace
+      - rsync
+      - jq
+    state: present
+
+
