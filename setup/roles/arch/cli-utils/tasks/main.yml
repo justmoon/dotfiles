@@ -3,8 +3,10 @@
   community.general.pacman:
     name:
       - git
+      - openssh
       - httpie
       - the_silver_searcher
+      - pass
       - htop
       - fzf
       - fasd
@@ -13,4 +15,14 @@
       - strace
       - rsync
       - jq
+      - net-tools
+      - acpi
+      - usbutils
+      - imagemagick
+      - ffmpeg
+      - bluez
+      - bluez-utils
+      - tpm2-tools
+      - wireguard-tools
+      - dconf
     state: present

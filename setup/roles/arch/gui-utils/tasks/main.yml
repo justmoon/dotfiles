@@ -3,5 +3,7 @@
   community.general.pacman:
     name:
       - wireshark-qt
+      - gimp
+      - inkscape
     state: present
 
