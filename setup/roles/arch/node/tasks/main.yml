@@ -1,7 +1,9 @@
 - name: Install Node.js
   become: true
   community.general.pacman:
-    name: nodejs
+    name:
+      - nodejs
+      - npm
     state: present
 
 - name: Install Yarn
