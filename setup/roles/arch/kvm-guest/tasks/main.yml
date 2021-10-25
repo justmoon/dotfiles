@@ -1,0 +1,7 @@
+- name: Install SPICE guest tools
+  become: true
+  community.general.pacman:
+    name:
+      - spice-vdagent
+      - xf86-video-qxl
+  when: ansible_virtualization_role == "guest" and ansible_virtualization_type == "kvm"

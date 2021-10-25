@@ -10,4 +10,5 @@
     - arch/go
     - arch/code
     - arch/gui-utils
+    - arch/kvm-guest
     - arch/user
