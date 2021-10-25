@@ -8,4 +8,4 @@
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/ use-system-font false
 
 - name: Install Dracula GNOME Terminal theme
-  ansible.builtin.shell: $HOME/opt/dracula-gnome-terminal/install.sh --profile Default --scheme Dracula --skip-dircolors
+  ansible.builtin.shell: $HOME/opt/dracula-gnome-terminal/install.sh --profile :{{ gnome_terminal_profile.stdout }} --scheme Dracula --skip-dircolors
