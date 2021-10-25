@@ -9,4 +9,5 @@
     - arch/docker
     - arch/go
     - arch/code
+    - arch/gui-utils
     - arch/user

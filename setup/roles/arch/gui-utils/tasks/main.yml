@@ -1,0 +1,7 @@
+- name: Install GUI utilities
+  become: true
+  community.general.pacman:
+    name:
+      - wireshark
+    state: present
+
