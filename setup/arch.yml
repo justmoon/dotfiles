@@ -13,3 +13,4 @@
     - arch/kvm-guest
     - arch/user
     - arch/gnome-terminal
+    - arch/fonts

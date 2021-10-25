@@ -1,0 +1,18 @@
+- name: Install fonts
+  become: true
+  community.general.pacman:
+    name:
+      - ttf-hack
+      - ttf-font-awesome
+      - ttf-dejavu
+      - ttf-ibm-plex
+      - ttf-roboto
+      - noto-fonts
+      - noto-fonts-emoji
+      - ttf-croscore
+      - powerline-fonts
+    state: present
+
+- name: update font-cache
+  become: true
+  command: fc-cache -fv
