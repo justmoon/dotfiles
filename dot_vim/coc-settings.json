@@ -1,0 +1,23 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "jsonc",
+    "css",
+    "scss"
+  ],
+  "snippets.ultisnips.directories": ["UltiSnips"],
+  "coc.source.emoji.filetypes": null,
+  "diagnostic.errorSign": "🞪",
+  "diagnostic.warningSign": "●",
+  "diagnostic.infoSign": "●",
+  "explorer.file.showHiddenFiles": true,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.keyMappings.global": {
+    "<cr>": ["expandable?", ["expanded?", "collapse", "expand"], "open"]
+  },
+  "explorer.file.reveal.auto": true
+}

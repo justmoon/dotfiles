@@ -11,6 +11,7 @@
     - arch/code
     - arch/gui-utils
     - arch/kvm-guest
+    - arch/vim
     - arch/user
     - arch/gnome-terminal
     - arch/fonts

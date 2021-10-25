@@ -1,0 +1,503 @@
+" Set terminal title
+set title
+
+" Show relative line numbers and current absolute line number in normal mode and
+" all absolute line numbers in insert mode
+set number relativenumber
+autocmd InsertEnter * :set norelativenumber
+autocmd InsertLeave * :set relativenumber
+
+" Highlight cursor line
+set cursorline
+
+" UTF-8 encoding, duh
+set encoding=utf-8
+
+" Disable bell (visual and beep)
+set belloff=all
+
+" Always keep some lines around the cursor
+set scrolloff=7
+
+" Default to soft tabs, two spaces wide
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+
+" Don't show redundant mode
+set noshowmode
+
+" Automatically reload changed files if unmodified
+set autoread
+
+" Split to the right or below
+set splitbelow
+set splitright
+
+" Check for changes when gaining focus
+au FocusGained,BufEnter * :silent! !
+
+" Save file when losing focus
+au FocusLost,WinLeave * :silent! w
+
+" Show whitespace
+set list lcs=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+
+" vim-plug: load plugins
+call plug#begin('~/.vim/plugged')
+
+Plug 'dracula/vim', { 'as': 'dracula' }
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'preservim/nerdtree'
+
+Plug 'tpope/vim-fugitive'
+
+Plug 'mlaursen/vim-react-snippets'
+
+Plug 'tpope/vim-sensible'
+
+Plug 'tpope/vim-surround'
+
+Plug 'tpope/vim-abolish'
+
+Plug 'junegunn/fzf'
+
+Plug 'junegunn/fzf.vim'
+
+Plug 'junegunn/goyo.vim'
+
+Plug 'junegunn/limelight'
+
+Plug 'airblade/vim-gitgutter'
+
+Plug 'preservim/nerdcommenter'
+
+Plug 'liuchengxu/vista.vim'
+
+Plug 'matze/vim-move'
+
+Plug 'itchyny/lightline.vim'
+
+Plug 'kshenoy/vim-signature'
+
+Plug 'duggiefresh/vim-easydir'
+
+Plug 'simnalamburt/vim-mundo'
+
+Plug 'sheerun/vim-polyglot'
+
+Plug 'styled-components/vim-styled-components'
+
+call plug#end()
+
+" json-vim: Do not hide quotes in JSON files
+let g:vim_json_conceal = 0
+
+" vim-markdown: Do not hide useful content
+let g:vim_markdown_conceal = 0
+
+" Dracula: Enable dracula theme
+syntax on
+colorscheme dracula
+let g:airline_theme='dracula'
+
+" Lightline: Instantly update airline when exiting insert mode
+"set ttimeoutlen=50
+
+" Lightline: Config
+let g:lightline = {
+  \ 'colorscheme': 'dracula',
+  \ 'active': {
+  \   'left': [
+  \     [ 'mode', 'paste' ],
+  \     [ 'filename', 'vista', 'coc_warnings', 'coc_errors' ],
+  \     [ 'git' ]
+  \   ],
+  \   'right': [
+  \     [ 'lineinfo' ],
+  \     [ 'fileformat', 'fileencoding', 'filetype' ]
+  \   ]
+  \ },
+  \ 'inactive': {
+  \   'left': [
+  \     [ 'filename' ]
+  \   ],
+  \   'right': [
+  \     [ 'lineinfo' ]
+  \   ]
+  \ },
+  \ 'component': {
+  \   'lineinfo': ' %3l:%-2v(%3p%%)%<',
+  \ },
+  \ 'component_function': {
+  \   'cocstatus': 'coc#status',
+  \   'filename': 'LightlineFilename',
+  \   'git': 'LightlineGit',
+  \   'vista': 'LightlineVista'
+  \ },
+  \ 'component_expand': {
+  \   'coc_warnings': 'LightlineCocWarnings',
+  \   'coc_errors': 'LightlineCocErrors'
+  \ },
+  \ 'component_type': {
+  \   'coc_warnings': 'warning',
+  \   'coc_errors': 'error'
+  \ },
+  \ 'separator': { 'left': '', 'right': '' },
+  \ 'subseparator': { 'left': '', 'right': '' }
+  \ }
+function! LightlineModified()
+  return &ft =~# 'help\|vimfiler' ? '' : &modified ? '🞼' : &modifiable ? '' : '-'
+endfunction
+function! LightlineReadonly()
+  return &ft !~? 'help\|vimfiler' && &readonly ? '' : ''
+endfunction
+function! LightlineFilename()
+  return (LightlineReadonly() !=# '' ? LightlineReadonly() . ' ' : '') .
+  \ (&ft ==# 'vimfiler' ? vimfiler#get_status_string() :
+  \  &ft ==# 'unite' ? unite#get_status_string() :
+  \  &ft ==# 'vimshell' ? vimshell#get_status_string() :
+  \ expand('%:t') !=# '' ? expand('%:t') : '[No Name]') .
+  \ (LightlineModified() !=# '' ? LightlineModified() : '')
+endfunction
+function! LightlineGit()
+	if exists('*FugitiveHead')
+		let branch = FugitiveHead()
+    let [a,m,r] = GitGutterGetHunkSummary()
+		return branch !=# '' ? printf('+%d ~%d -%d', a, m, r) . '  '.branch : ''
+	endif
+	return ''
+endfunction
+function! LightlineVista() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+function! s:lightline_coc_diagnostic(kind, sign) abort
+  let info = get(b:, 'coc_diagnostic_info', 0)
+  if empty(info) || get(info, a:kind, 0) == 0
+    return ''
+  endif
+  return printf('%s %d', a:sign, info[a:kind])
+endfunction
+function! LightlineCocErrors() abort
+  return s:lightline_coc_diagnostic('error', '🞮')
+endfunction
+" ✘
+function! LightlineCocWarnings() abort
+  return s:lightline_coc_diagnostic('warning', '●')
+endfunction
+
+autocmd User CocDiagnosticChange call lightline#update()
+
+" Vista: Run at start to enable vista.vim
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
+" CoC: TextEdit might fail if hidden is not set.
+set hidden
+
+" CoC: Some servers have issues with backup files.
+set nobackup
+set nowritebackup
+
+" CoC: Give more space for displaying messages.
+"set cmdheight=2
+
+" CoC: Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" CoC: Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" CoC: Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" CoC: Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" CoC: Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" CoC: Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" CoC: Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" CoC: GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" CoC: Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" CoC: Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" CoC: Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" CoC: Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" CoC: Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+" CoC: Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" CoC: Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" CoC: Mappings using CoCList:
+" Show all diagnostics.
+"nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+"nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+"nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+"nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+"nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+"nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+"nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+"nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" CoC: Extensions
+let g:coc_global_extensions = [
+      \'coc-json',
+      \'coc-html',
+      \'coc-tsserver',
+      \'coc-prettier',
+      \'coc-highlight',
+      \'coc-dictionary',
+      \'coc-snippets',
+      \'coc-lists',
+      \'coc-yank',
+      \'coc-yaml',
+      \'coc-syntax',
+      \'coc-emoji',
+      \'coc-calc',
+      \'coc-xml',
+      \'coc-webpack',
+      \'coc-vimlsp',
+      \'coc-explorer',
+      \'coc-css',
+      \'coc-cssmodules'
+      \]
+
+" CoC: Make diagnostic info sign blue
+hi! CocInfoSign guifg=#61AFEF
+hi! CocWarningSign guifg=#E5C07B
+hi! CocErrorSign guifg=#E06C75
+
+" CoC Explorer: When in directory tree, open things to the right
+function! ExplorerOpen(cmd)
+    " If more than 1 window, and currently in nerdtree or coc-explorer, open
+    " to the right
+    if winnr('$') > 1 && (&ft == 'nerdtree' || &ft == 'coc-explorer')
+        " Move one window to the right, then up
+        wincmd l
+        wincmd k
+    endif
+    exe a:cmd
+endfunction
+
+" Gitgutter: Nicer remove sign
+let g:gitgutter_sign_removed = '–'
+
+" NERDTree: Better arrows
+let NERDTreeShowHidden=1
+let g:NERDTreeDirArrowExpandable = '⯈'
+let g:NERDTreeDirArrowCollapsible = '⯆'
+
+" Goyo: Also enable Limelight
+function! s:goyo_enter()
+  Limelight
+  CocDisable
+endfunction
+
+function! s:goyo_leave()
+  Limelight!
+  CocEnable
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+" Git Gutter: Always show sign column
+set signcolumn=yes
+
+" Move: Use Ctrl+arrow keys to move lines
+let g:move_map_keys = 0
+vmap <C-Up> <Plug>MoveBlockUp
+vmap <C-Down> <Plug>MoveBlockDown
+nmap <C-Up> <Plug>MoveLineUp
+nmap <C-Down> <Plug>MoveLineDown
+
+" Vista: No icons
+let g:vista#renderer#enable_icon = 0
+
+" FZF: Search for stuff under cursor
+function! SearchWordWithAg()
+  execute 'Ag' expand('<cword>')
+endfunction
+
+function! SearchVisualSelectionWithAg() range
+  let old_reg = getreg('"')
+  let old_regtype = getregtype('"')
+  let old_clipboard = &clipboard
+  set clipboard&
+  normal! ""gvy
+  let selection = getreg('"')
+  call setreg('"', old_reg, old_regtype)
+  let &clipboard = old_clipboard
+  execute 'Ag' selection
+endfunction
+
+" NERDTree: Open with current file highlighted
+function! NERDTreeToggleInCurDir()
+  " If NERDTree is open in the current buffer
+  if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+    exe ":NERDTreeClose"
+  else
+    exe ":NERDTreeFind"
+  endif
+endfunction
+
+" Leader mappings
+let mapleader=","
+"nnoremap <silent> <leader>q :call NERDTreeToggleInCurDir()<CR>
+nnoremap <silent> <leader>q :CocCommand explorer<CR>
+nmap \ <leader>q
+nnoremap <silent> <leader>f :call ExplorerOpen(":Files")<CR>
+nnoremap <silent> <leader>; :BLines<CR>
+nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
+nnoremap <silent> <leader>K :call SearchWordWithAg()<CR>
+vnoremap <silent> <leader>K :call SearchVisualSelectionWithAg()<CR>
+nnoremap <silent> <leader>gl :Commits<CR>
+nnoremap <silent> <leader>ga :BCommits<CR>
+nnoremap <silent> <leader>ft :Filetypes<CR>
+nnoremap <silent> <leader>y :Goyo<CR>
+nnoremap <silent> <leader>v :Vista!!<CR>
+nnoremap <silent> <leader>u :MundoToggle<CR>
+
+" Git
+nnoremap <silent> <leader>gs :Gedit :<CR>
+nnoremap <silent> <leader>gd :Gdiff<CR>
+nnoremap <silent> <leader>gc :Gcommit<CR>
+nnoremap <silent> <leader>gb :Gblame<CR>
+nnoremap <silent> <leader>ge :Gedit<CR>
+nnoremap <silent> <leader>gE :Gedit<space>
+nnoremap <silent> <leader>gr :Gread<CR>
+nnoremap <silent> <leader>gR :Gread<space>
+nnoremap <silent> <leader>gw :Gwrite<CR>
+nnoremap <silent> <leader>gW :Gwrite!<CR>
+nnoremap <silent> <leader>gq :Gwq<CR>
+nnoremap <silent> <leader>gQ :Gwq!<CR>
+
+" CoC: Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" CoC: Formatting selected code.
+xmap <leader>F  <Plug>(coc-format-selected)
+nmap <leader>F  <Plug>(coc-format-selected)
+
+" CoC: Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" CoC: Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+
+" CoC: Apply AutoFix to problem on the current line.
+nmap <leader>x <Plug>(coc-fix-current)
+
+" Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+
+" Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
+" Ctrl-based mappings
+noremap <silent> <C-S> :update<CR>
+vnoremap <silent> <C-S> <ESC>:update<CR>
+inoremap <silent> <C-S> <ESC>:update<CR>
+nmap <C-p> <leader>f
+nmap <C-_> <Plug>NERDCommenterToggle
+vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
+
+imap <C-x><C-f> <plug>(fzf-complete-file-ag)
+imap <C-x><C-l> <plug>(fzf-complete-line)
+
+imap <S-Insert> <ESC>"+pa
+
+nnoremap <Tab> >>_
+nnoremap <S-Tab> <<_
+inoremap <S-Tab> <C-D>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
