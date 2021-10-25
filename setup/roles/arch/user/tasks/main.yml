@@ -2,7 +2,13 @@
   become: true
   user:
     name: "{{ main_user }}"
-    groups: wheel,wireshark,docker,libvirt,lp,kvm
+    groups:
+      - wheel
+      - wireshark
+      - docker
+      - libvirt
+      - lp
+      - kvm
     append: true
     shell: /bin/zsh
 
