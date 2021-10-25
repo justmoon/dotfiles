@@ -6,7 +6,7 @@
     - arch/node
     - arch/cli-utils
     - arch/zsh
-    - arch/user
     - arch/docker
     - arch/go
     - arch/code
+    - arch/user
