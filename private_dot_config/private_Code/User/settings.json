@@ -57,5 +57,6 @@
   "docker.showStartPage": false,
   "editor.tabSize": 2,
   "prettier.requireConfig": true,
-  "redhat.telemetry.enabled": false
+  "redhat.telemetry.enabled": false,
+  "git.autofetch": true
 }
