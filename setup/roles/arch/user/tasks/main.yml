@@ -1,9 +1,9 @@
 - name: Setup user {{ main_user }}
-  become: yes
+  become: true
   user:
     name: "{{ main_user }}"
     groups: wheel,wireshark,docker,tss,libvirt,lp,kvm
-    append: yes
+    append: true
     shell: /bin/zsh
 
 - name: Allow members of group wheel to execute any command

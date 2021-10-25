@@ -1,7 +1,7 @@
 - name: Install VS Code
+  become: true
+  become_user: aur_builder
   kewlfft.aur.aur:
     name: visual-studio-code-bin
     use: makepkg
     state: present
-  become: yes
-  become_user: aur_builder

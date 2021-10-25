@@ -1,4 +1,5 @@
 - name: Install Docker
+  become: true
   community.general.pacman:
     name: docker
     state: present

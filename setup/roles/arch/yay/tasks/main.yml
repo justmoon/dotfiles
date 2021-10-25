@@ -14,7 +14,7 @@
 - name: Creating aur_builder
   become: true
   user:
-    name: "aur_builder"
+    name: aur_builder
     group: wheel
 
 - name: Giving passwordless access to pacman
@@ -27,7 +27,7 @@
 
 - name: Installing yay
   become: true
-  become_user: "aur_builder"
+  become_user: aur_builder
   kewlfft.aur.aur:
     name: yay
     use: makepkg

@@ -1,4 +1,5 @@
 - name: Install ZSH
+  become: true
   community.general.pacman:
     name:
       - zsh
@@ -8,15 +9,9 @@
     state: present
 
 - name: Install Oh My ZSH
+  become: true
+  become_user: aur_builder
   kewlfft.aur.aur:
     name: oh-my-zsh-git
     use: makepkg
     state: present
-  become: yes
-  become_user: aur_builder
-
-- name: Set shell to ZSH
-  become: yes
-  user:
-    name: "{{ main_user }}"
-    shell: /bin/zsh

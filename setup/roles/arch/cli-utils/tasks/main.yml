@@ -1,4 +1,5 @@
 - name: Install CLI utilities
+  become: true
   community.general.pacman:
     name:
       - git
