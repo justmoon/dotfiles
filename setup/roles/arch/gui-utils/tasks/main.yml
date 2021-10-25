@@ -2,6 +2,6 @@
   become: true
   community.general.pacman:
     name:
-      - wireshark
+      - wireshark-qt
     state: present
 
