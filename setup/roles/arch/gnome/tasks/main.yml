@@ -1,0 +1,8 @@
+- name: Set GTK theme
+  command: gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+
+- name: Map CAPSLOCK to ESC
+  command: gsettings set org.gnome.desktop.input-sources xkb-options "['caps:swapescape','lv3:ralt_switch']"
+
+- name: Lock system five seconds after screensaver triggers
+  command: gsettings set org.gnome.desktop.screensaver lock-delay 5
