@@ -1,4 +1,3 @@
----
 - name: Updating cache
   become: true
   pacman:

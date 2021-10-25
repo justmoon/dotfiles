@@ -13,7 +13,7 @@ if [ -f "/etc/arch-release" ]; then
   ansible-galaxy collection install -r $CHEZMOI_PATH/setup/arch_requirements.yml
   ansible-playbook -i "localhost," -c local --become-method=sudo $CHEZMOI_PATH/setup/arch.yml
 else
-  echo "Current operating system is not supported in dotfiles bootstrap script"
+  echo "Current operating system is not supported in dotfiles"
 fi
 
 

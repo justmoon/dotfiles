@@ -1,0 +1,6 @@
+- hosts: all
+  vars:
+    main_user: "{{ ansible_user_id }}"
+  roles:
+    - arch/pacman-update
+    - arch/yay-update

@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+set -e
+
+usage() {
+  __USAGE="
+Usage: $(basename $0) [OPTIONS] COMMAND
+
+Utility for system management tasks.
+
+Commands:
+  install    Run initial setup
+  update     Update system
+"
+  echo "$__USAGE" 1>&2 
+}
+
+COMMAND=""
+PARAMS=""
+CHEZMOI_PATH="$(chezmoi source-path)"
+
+while (( "$#" )); do
+  case "$1" in
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    -*|--*=) # unsupported flags
+      echo "Error: Unsupported flag $1" >&2
+      exit 1
+      ;;
+    *)
+      if [ "$COMMAND" == "" ]; then
+        # First argument is the command
+        COMMAND="$1"
+      else 
+        PARAMS="$PARAMS $1"
+      fi
+      shift
+      ;;
+  esac
+done
+
+# set positional arguments in their proper place
+eval set -- "$PARAMS"
+
+case "$COMMAND" in
+  "")
+    usage
+    exit 1
+    ;;
+  install)
+    $CHEZMOI_PATH/setup/install.sh
+    ;;
+  update)
+    $CHEZMOI_PATH/setup/update.sh
+    ;;
+  *)
+    echo "Error: Unsupported command $COMMAND" >&2
+    usage
+    exit 1
+    ;;
+esac
