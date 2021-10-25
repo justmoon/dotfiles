@@ -101,7 +101,9 @@ let g:vim_markdown_conceal = 0
 
 " Dracula: Enable dracula theme
 syntax on
-colorscheme dracula
+if filereadable( expand("$HOME/.vim/plugged/dracula") )
+  colorscheme dracula
+endif
 let g:airline_theme='dracula'
 
 " Lightline: Instantly update airline when exiting insert mode
