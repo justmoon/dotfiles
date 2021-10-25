@@ -1,0 +1,22 @@
+- name: Install ZSH
+  community.general.pacman:
+    name:
+      - zsh
+      - zsh-completions
+      - zsh-syntax-highlighting
+      - zsh-theme-powerlevel10k
+    state: present
+
+- name: Install Oh My ZSH
+  kewlfft.aur.aur:
+    name: oh-my-zsh-git
+    use: makepkg
+    state: present
+  become: yes
+  become_user: aur_builder
+
+- name: Set shell to ZSH
+  become: yes
+  user:
+    name: "{{ main_user }}"
+    shell: /bin/zsh

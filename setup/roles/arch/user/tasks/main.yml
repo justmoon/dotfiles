@@ -1,0 +1,15 @@
+- name: Setup user {{ main_user }}
+  become: yes
+  user:
+    name: "{{ main_user }}"
+    groups: wheel,wireshark,docker,tss,libvirt,lp,kvm
+    append: yes
+    shell: /bin/zsh
+
+- name: Allow members of group wheel to execute any command
+  become: true
+  lineinfile:
+    path: /etc/sudoers.d/10-wheel
+    line: '%wheel ALL=(ALL) ALL'
+    create: true
+    validate: 'visudo -cf %s'

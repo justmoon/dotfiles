@@ -1,0 +1,19 @@
+- name: Install CLI utilities - http-server (NPM)
+  community.general.yarn:
+    name: http-server
+    global: yes
+
+- name: Install CLI utilities - zx (NPM)
+  community.general.yarn:
+    name: zx
+    global: yes
+
+- name: Install CLI utilities - npm-check-updates (NPM)
+  community.general.yarn:
+    name: npm-check-updates
+    global: yes
+
+- name: Install CLI utilities - madge (NPM)
+  community.general.yarn:
+    name: madge
+    global: yes

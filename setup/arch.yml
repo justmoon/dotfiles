@@ -1,7 +1,12 @@
 - hosts: all
+  vars:
+    main_user: "{{ ansible_user_id }}"
   roles:
     - arch/yay
+    - arch/node
     - arch/cli-utils
+    - arch/zsh
+    - arch/user
     - arch/docker
     - arch/go
     - arch/code

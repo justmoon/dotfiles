@@ -1,0 +1,160 @@
+# Disable Ctrl+S shortcut
+stty -ixon
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Path to your oh-my-zsh installation.
+export ZSH=/usr/share/oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME=""
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+#ZSH_CUSTOM=
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git git-extras command-not-found npm wd docker httpie sudo systemd fasd golang kubectl)
+
+# Path
+export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/opt/AWS-ElasticBeanstalk-CLI-2.6.3/eb/linux/python2.7/:/usr/local/go/bin:$HOME/go/bin:$HOME/opt/android/sdk/platform-tools:$HOME/opt/android/sdk/tools:$HOME/opt/depot_tools:/usr/local/go/bin:$HOME/opt/go/bin:/home/moon/opt/google-cloud-sdk/bin:/usr/bin/core_perl:$(yarn global bin)"
+# export MANPATH="/usr/local/man:$MANPATH"
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+# User configuration
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Don't write history until shell exits
+# See: http://superuser.com/questions/410965/command-history-in-zsh
+setopt APPEND_HISTORY
+
+# Don't store commands starting with space
+setopt HISTIGNORESPACE
+
+# Don't complete if there are multiple options
+# See: http://serverfault.com/questions/109207/how-do-i-make-zsh-completion-act-more-like-bash-completion
+setopt noautomenu
+setopt nomenucomplete
+
+# Preferred editor
+export EDITOR='vim'
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
+if [[ ! -d $ZSH_CACHE_DIR ]]; then
+  mkdir $ZSH_CACHE_DIR
+fi
+
+source $ZSH/oh-my-zsh.sh
+
+# Prettier git status
+alias gst='git status -sb'
+compdef gst=git
+
+# Git up
+alias gup='git pull --rebase --autostash'
+
+# Git push as tracking w/ tags
+alias ggpu='git push -u origin $(current_branch) --follow-tags'
+compdef ggpu=git
+
+# Git remote shortcut conflicts with git-run
+unalias gr
+
+# Git pull shortcut conflicts with gitless
+unalias gl
+
+alias ow="cd /opt/workspace"
+
+# FZF
+[[ ! -f ~/.config/zsh/fzf.zsh ]] || source ~/.config/zsh/fzf.zsh
+
+# drill is basically dig...
+alias dig=drill
+
+# Madge (visualize npm dependencies
+mdeps () {
+  local file="/tmp/deps-graph-`date +%s`-$$"
+  madge --dot --exclude=node_modules $* > $file
+  xdot $file
+  rm $file
+}
+
+# Golang
+export GOPATH="/home/moon/opt/go"
+
+# NVM
+[ -s /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
+
+# Set gpg-agent as SSH agent
+export SSH_AGENT_PID=
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
+
+# Load Powerline10k prompt config
+[[ ! -f ~/.config/p10k/p10k.zsh ]] || source ~/.config/p10k/p10k.zsh
+
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+
+# Provide a file where local-only zshrc commands can live
+[[ ! -f ~/.local.zsh ]] || source ~/.local.zsh
+

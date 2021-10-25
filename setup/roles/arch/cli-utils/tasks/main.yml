@@ -1,6 +1,7 @@
 - name: Install CLI utilities
   community.general.pacman:
     name:
+      - git
       - httpie
       - the_silver_searcher
       - htop
@@ -12,5 +13,3 @@
       - rsync
       - jq
     state: present
-
-
