@@ -14,3 +14,11 @@
 
 - name: Set monospace font to MonoLisa
   command: gsettings set org.gnome.desktop.interface monospace-font-name 'MonoLisa 10'
+
+- name: Disable gnome-keyring-ssh
+  shell: |
+    echo 'X-GNOME-Autostart-enabled=false' \
+      | cat /etc/xdg/autostart/gnome-keyring-ssh.desktop - \
+      >> ~/.config/autostart/gnome-keyring-ssh.desktop
+  args:
+    creates: ~/.config/autostart/gnome-keyring-ssh.desktop
