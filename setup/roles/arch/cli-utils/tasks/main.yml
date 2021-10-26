@@ -25,4 +25,9 @@
       - tpm2-tools
       - wireguard-tools
       - dconf
+      - gstreamer
+      - gst-libav
+      - gst-plugins-base
+      - gst-plugins-good
+      - gst-plugins-ugly
     state: present
