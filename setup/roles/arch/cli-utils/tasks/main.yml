@@ -2,7 +2,6 @@
   become: true
   community.general.pacman:
     name:
-      - git
       - openssh
       - httpie
       - the_silver_searcher

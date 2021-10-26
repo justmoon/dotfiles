@@ -2,6 +2,7 @@
   vars:
     main_user: "{{ ansible_user_id }}"
   roles:
+    - arch/git
     - arch/yay
     - arch/node
     - arch/cli-utils
