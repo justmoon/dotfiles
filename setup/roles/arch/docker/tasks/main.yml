@@ -8,6 +8,8 @@
 
 # Not recommended to launch Docker on boot for desktop systems
 # See: https://github.com/moby/moby/issues/38373
-- name: Disable Docker service on boot
+- name: Enable Docker socket
   become: true
-  command: systemctl disable docker.service
+  shell: |
+    systemctl disable docker.service
+    systemctl enable docker.socket
