@@ -12,3 +12,9 @@
     type = "file"
     url = "https://raw.githubusercontent.com/dracula/gedit/master/dracula.xml"
     refreshPeriod = "168h"
+[".local/share/themes/Dracula"]
+    type = "archive"
+    exact = true
+    url = "https://github.com/dracula/gtk/archive/master.tar.gz"
+    stripComponents = 1
+    refreshPeriod = "168h"
