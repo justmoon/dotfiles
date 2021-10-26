@@ -22,6 +22,7 @@
       - bluez
       - bluez-utils
       - tpm2-tools
+      - tpm2-pkcs11
       - wireguard-tools
       - dconf
       - gstreamer
@@ -29,4 +30,7 @@
       - gst-plugins-base
       - gst-plugins-good
       - gst-plugins-ugly
+      - gnupg
+      - gnupg-pkcs11-scd
+      - pinentry
     state: present
