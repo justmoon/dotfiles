@@ -58,5 +58,6 @@
   "editor.tabSize": 2,
   "prettier.requireConfig": true,
   "redhat.telemetry.enabled": false,
-  "git.autofetch": true
+  "git.autofetch": true,
+  "git.confirmSync": false
 }
