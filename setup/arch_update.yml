@@ -4,3 +4,5 @@
   roles:
     - arch/pacman-update
     - arch/yay-update
+    - arch/vim-update
+    - arch/code-update
