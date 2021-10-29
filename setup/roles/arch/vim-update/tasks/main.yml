@@ -1,5 +1,0 @@
-- name: Update vim plugins
-  command: vim +'PlugUpdate --sync' +qa
-
-- name: Update CoC plugins
-  command: vim +CocUpdateSync +qa
