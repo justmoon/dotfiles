@@ -11,3 +11,6 @@
   community.general.npm:
     name: yarn
     global: true
+
+- name: Disable yarn telemetry
+  command: yarn config set --home enableTelemetry 0
