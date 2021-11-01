@@ -33,4 +33,5 @@
       - gnupg
       - gnupg-pkcs11-scd
       - pinentry
+      - wl-clipboard
     state: present
