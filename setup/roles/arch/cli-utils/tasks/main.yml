@@ -34,4 +34,6 @@
       - gnupg-pkcs11-scd
       - pinentry
       - wl-clipboard
+      - patch
+      - elfutils
     state: present
