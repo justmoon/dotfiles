@@ -20,6 +20,9 @@ if [ -f "/etc/arch-release" ]; then
   do 
     code --install-extension "$ext" 
   done
+
+  echo 'Update Flatpak apps'
+  flatpak update
 else
   echo "Current operating system is not supported in dotfiles"
 fi
