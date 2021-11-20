@@ -36,4 +36,5 @@
       - wl-clipboard
       - patch
       - elfutils
+      - lsd
     state: present
