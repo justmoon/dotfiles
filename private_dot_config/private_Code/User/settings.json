@@ -59,5 +59,7 @@
   "prettier.requireConfig": true,
   "redhat.telemetry.enabled": false,
   "git.autofetch": true,
-  "git.confirmSync": false
+  "git.confirmSync": false,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active"
 }
