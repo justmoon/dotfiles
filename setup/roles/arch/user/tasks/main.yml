@@ -9,6 +9,7 @@
       - libvirt
       - lp
       - kvm
+      - video
     append: true
     shell: /bin/zsh
 
