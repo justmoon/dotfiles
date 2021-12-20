@@ -37,4 +37,5 @@
       - patch
       - elfutils
       - lsd
+      - kubectl
     state: present
