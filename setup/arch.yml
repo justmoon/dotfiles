@@ -6,6 +6,7 @@
     - arch/yay
     - arch/node
     - arch/cli-utils
+    - arch/node-utils
     - arch/zsh
     - arch/docker
     - arch/go
