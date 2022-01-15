@@ -6,5 +6,7 @@
       - wireshark-qt
       - gimp
       - inkscape
+      # Enable automatic screen brightness
+      - iio-sensor-proxy
     state: present
 
