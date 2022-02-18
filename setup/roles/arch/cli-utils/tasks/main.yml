@@ -39,4 +39,5 @@
       - lsd
       - kubectl
       - smartmontools
+      - fwupd
     state: present
