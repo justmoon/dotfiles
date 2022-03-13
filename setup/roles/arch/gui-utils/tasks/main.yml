@@ -8,5 +8,6 @@
       - inkscape
       # Enable automatic screen brightness
       - iio-sensor-proxy
+      - mesa-utils
     state: present
 
