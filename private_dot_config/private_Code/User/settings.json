@@ -61,5 +61,6 @@
   "git.autofetch": true,
   "git.confirmSync": false,
   "editor.bracketPairColorization.enabled": true,
-  "editor.guides.bracketPairs": "active"
+  "editor.guides.bracketPairs": "active",
+  "reactSnippets.settings.importReactOnTop": false
 }
