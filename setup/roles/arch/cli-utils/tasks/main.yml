@@ -40,4 +40,5 @@
       - kubectl
       - smartmontools
       - fwupd
+      - github-cli
     state: present
