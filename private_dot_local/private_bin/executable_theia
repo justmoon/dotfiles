@@ -4,45 +4,44 @@ set -e
 
 usage() {
   __USAGE="
-Usage: $(basename $0) [OPTIONS] COMMAND
+ \x1b[34m▶\x1b[0m Theia is a utility for system management tasks.
 
-Utility for system management tasks.
+   \x1b[1mUSAGE\x1b[0m
+ \x1b[34m$\x1b[0m theia [GLOBAL_OPTIONS] COMMAND [COMMAND_OPTIONS]
 
-Commands:
-  install    Run initial setup
-  update     Update system
+   \x1b[1mCOMMANDS\x1b[0m
+ \x1b[34m•\x1b[0m install ……… Run initial setup
+ \x1b[34m•\x1b[0m update ………… Update system
+
+   Use \x1b[3mtheia [COMMAND] -h\x1b[0m to get help about each command.
 "
-  echo "$__USAGE" 1>&2 
+  echo -e "$__USAGE" 1>&2 
 }
 
 COMMAND=""
-PARAMS=""
+ARGS=("$@")
 CHEZMOI_PATH="$(chezmoi source-path)"
 
-while (( "$#" )); do
-  case "$1" in
-    -h|--help)
-      usage
-      exit 0
-      ;;
-    -*|--*=) # unsupported flags
-      echo "Error: Unsupported flag $1" >&2
-      exit 1
-      ;;
-    *)
-      if [ "$COMMAND" == "" ]; then
-        # First argument is the command
+for ((i=0; i<"${#ARGS[@]}"; ++i)); do
+  # Any flags that occur before the command are intended for this script
+  if [ "$COMMAND" == "" ]; then
+    case "${ARGS[i]}" in
+      -h|--help)
+        usage
+        exit 0
+        ;;
+      -*|--*=)
+        echo "Error: Unsupported flag $1" >&2
+        exit 1
+        ;;
+      *)
+        # First argument without a dash is the command
         COMMAND="$1"
-      else 
-        PARAMS="$PARAMS $1"
-      fi
-      shift
-      ;;
-  esac
+        unset ARGS[i];
+        ;;
+    esac
+  fi
 done
-
-# set positional arguments in their proper place
-eval set -- "$PARAMS"
 
 case "$COMMAND" in
   "")
@@ -50,10 +49,10 @@ case "$COMMAND" in
     exit 1
     ;;
   install)
-    $CHEZMOI_PATH/setup/install.sh
+    $CHEZMOI_PATH/setup/install.sh "${ARGS[@]}"
     ;;
   update)
-    $CHEZMOI_PATH/setup/update.sh
+    $CHEZMOI_PATH/setup/update.sh "${ARGS[@]}"
     ;;
   *)
     echo "Error: Unsupported command $COMMAND" >&2

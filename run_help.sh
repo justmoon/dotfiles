@@ -3,15 +3,15 @@
 set -e
 
 __HELP="
-Chezmoi has updated the home directory configuration files.
+ \x1b[34m✓\x1b[0m Chezmoi has updated the home directory configuration files.
 
-To run the basic system setup routines, call:
+   To run the basic system setup routines, call:
 
-  $ theia install
+ \x1b[34m$\x1b[0m theia install
 
-To run a system upgrade, call:
+   To run a system upgrade, call:
 
-  $ theia update
+ \x1b[34m$\x1b[0m theia update
 "
 
-echo "$__HELP"
+echo -e "$__HELP"
