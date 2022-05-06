@@ -9,5 +9,9 @@
       # Enable automatic screen brightness
       - iio-sensor-proxy
       - mesa-utils
+      - pipewire
+      - pipewire-pulse
+      - pipewire-jack
+      - wireplumber
     state: present
 
