@@ -4,7 +4,7 @@
     name:
       - openssh
       - httpie
-      - the_silver_searcher
+      - ripgrep
       - pass
       - htop
       - fzf
