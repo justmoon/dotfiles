@@ -155,6 +155,9 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
 fi
 
+# Load ripgrep config
+export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/config
+
 # Provide a file where local-only zshrc commands can live
 [[ ! -f ~/.local.zsh ]] || source ~/.local.zsh
 
