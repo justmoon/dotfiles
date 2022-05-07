@@ -6,6 +6,8 @@
   ansible.builtin.shell: |
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/ font 'MonoLisa 11'
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/ use-system-font false
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/ default-size-columns 100
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/ default-size-rows 28
 
 - name: Install Dracula GNOME Terminal theme
   ansible.builtin.shell: $HOME/opt/dracula-gnome-terminal/install.sh --profile :{{ gnome_terminal_profile.stdout }} --scheme Dracula --skip-dircolors
