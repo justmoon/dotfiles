@@ -34,7 +34,6 @@ while (( "$#" )); do
   shift
 done
 
-exit 1
 # Make sure sudo password is cached
 sudo true
 
