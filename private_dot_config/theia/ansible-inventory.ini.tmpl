@@ -1,0 +1,6 @@
+{{ .chezmoi.hostname }} ansible_connection=local
+
+{{- if .feat.gui }}
+[gui]
+{{ .chezmoi.hostname }}
+{{- end }}

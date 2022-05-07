@@ -13,7 +13,7 @@ usage() {
  \x1b[34m•\x1b[0m install ……… Run initial setup
  \x1b[34m•\x1b[0m update ………… Update system
 
-   Use \x1b[3mtheia [COMMAND] -h\x1b[0m to get help about each command.
+   Use \x1b[1mtheia [COMMAND] -h\x1b[0m to get help about each command.
 "
   echo -e "$__USAGE" 1>&2 
 }

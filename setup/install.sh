@@ -41,7 +41,7 @@ sudo true
 if [ -f "/etc/arch-release" ]; then
   which ansible-playbook > /dev/null || sudo pacman -S ansible
   ansible-galaxy collection install --requirements-file $CHEZMOI_PATH/setup/arch_requirements.yml
-  ansible-playbook --inventory "localhost," --connection local --become-method=sudo $CHEZMOI_PATH/setup/arch.yml
+  ansible-playbook --inventory-file $HOME/.config/theia/ansible-inventory.ini --become-method=sudo $CHEZMOI_PATH/setup/arch.yml
 else
   echo "Current operating system is not supported in dotfiles"
 fi

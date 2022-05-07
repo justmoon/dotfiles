@@ -10,11 +10,14 @@
     - arch/zsh
     - arch/docker
     - arch/go
+    - arch/vim
+    - arch/user
+
+- hosts: gui
+  roles:
     - arch/code
     - arch/gui-utils
     - arch/kvm-guest
-    - arch/vim
-    - arch/user
     - arch/gnome-terminal
     - arch/fonts
     - arch/gnome
