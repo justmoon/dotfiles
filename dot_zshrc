@@ -55,7 +55,7 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras command-not-found npm wd docker httpie sudo systemd fasd golang kubectl yarn gh)
+plugins=(git git-extras command-not-found npm wd docker httpie sudo systemd fasd golang kubectl yarn gh fzf)
 
 # Path
 export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/opt/AWS-ElasticBeanstalk-CLI-2.6.3/eb/linux/python2.7/:/usr/local/go/bin:$HOME/go/bin:$HOME/opt/android/sdk/platform-tools:$HOME/opt/android/sdk/tools:$HOME/opt/depot_tools:/usr/local/go/bin:$HOME/opt/go/bin:/home/moon/opt/google-cloud-sdk/bin:/usr/bin/core_perl:$(yarn global bin)"

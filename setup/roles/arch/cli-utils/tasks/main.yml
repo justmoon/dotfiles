@@ -9,6 +9,7 @@
       - htop
       - fzf
       - fasd
+      - fd
       - pwgen
       - wget
       - strace
