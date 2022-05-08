@@ -14,4 +14,7 @@
       - pipewire-jack
       - wireplumber
     state: present
-
+    # Automatically remove conflicting packages
+    # (e.g. remove pulseaudio when installing pipewire-pulse)
+    # Magical option see: https://unix.stackexchange.com/a/584001
+    extra_args: --ask 4 --noconfirm
