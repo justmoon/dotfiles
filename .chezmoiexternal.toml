@@ -2,12 +2,6 @@
     type = "file"
     url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
     refreshPeriod = "168h"
-["opt/dracula-gnome-terminal"]
-    type = "archive"
-    url = "https://github.com/dracula/gnome-terminal/archive/master.tar.gz"
-    exact = true
-    stripComponents = 1
-    refreshPeriod = "168h"
 [".local/share/gedit/styles/dracula.xml"]
     type = "file"
     url = "https://raw.githubusercontent.com/dracula/gedit/master/dracula.xml"

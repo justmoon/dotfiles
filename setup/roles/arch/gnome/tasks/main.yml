@@ -27,9 +27,6 @@
   register: gnome_terminal_profile
   changed_when: false
 
-- name: Install Dracula GNOME Terminal theme
-  ansible.builtin.shell: $HOME/opt/dracula-gnome-terminal/install.sh --profile :{{ gnome_terminal_profile.stdout }} --scheme Dracula --skip-dircolors
-
 - name: Set system-wide monospace font to MonoLisa
   community.general.dconf:
     key: /org/gnome/desktop/interface/monospace-font-name
@@ -50,25 +47,49 @@
   args:
     creates: ~/.config/autostart/gnome-keyring-ssh.desktop
 
-- name: Set GNOME Terminal settings - Use system font
+- name: Set GNOME Terminal settings - use system font
   community.general.dconf:
     key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/use-system-font
     value: "false"
     state: present
 
-- name: Set GNOME Terminal settings - Default size columns
+- name: Set GNOME Terminal settings - default size columns
   community.general.dconf:
     key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/default-size-columns
     value: 100
     state: present
 
-- name: Set GNOME Terminal settings - Default size rows
+- name: Set GNOME Terminal settings - default size rows
   community.general.dconf:
     key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/default-size-rows
     value: 28
     state: present
 
-- name: Set GNOME Terminal settings - Bold color same as foreground
+- name: Set GNOME Terminal settings - color palette
+  community.general.dconf:
+    key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/palette
+    value: "['#262626', '#E356A7', '#42E66C', '#E4F34A', '#9B6BDF', '#E64747', '#75D7EC', '#EFA554', '#7A7A7A', '#FF79C6', '#50FA7B', '#F1FA8C', '#BD93F9', '#FF5555', '#8BE9FD', '#FFB86C']"
+    state: present
+
+- name: Set GNOME Terminal settings - background color
+  community.general.dconf:
+    key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/background-color
+    value: "'#282A36'"
+    state: present
+
+- name: Set GNOME Terminal settings - foreground color
+  community.general.dconf:
+    key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/foreground-color
+    value: "'#F8F8F2'"
+    state: present
+
+- name: Set GNOME Terminal settings - use theme colors
+  community.general.dconf:
+    key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/use-theme-colors
+    value: "false"
+    state: present
+
+- name: Set GNOME Terminal settings - bold color same as foreground
   community.general.dconf:
     key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/bold-color-same-as-fg
     value: "true"
