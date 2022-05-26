@@ -58,34 +58,37 @@
     scope: global
     value: main
 
-- name: Install Yarn
+- name: Install Node CLI utilities - yarn
   become: true
   community.general.npm:
     name: yarn
     global: true
 
-- name: Disable yarn telemetry
-  command: yarn config set --home enableTelemetry 0
+- name: Install Node CLI utilities - pnpm
+  become: true
+  community.general.npm:
+    name: pnpm
+    global: true
 
-- name: Install CLI utilities - http-server (NPM)
+- name: Install Node CLI utilities - http-server
   become: true
   community.general.npm:
     name: http-server
     global: true
 
-- name: Install CLI utilities - zx (NPM)
+- name: Install Node CLI utilities - zx
   become: true
   community.general.npm:
     name: zx
     global: true
 
-- name: Install CLI utilities - npm-check-updates (NPM)
+- name: Install Node CLI utilities - npm-check-updates
   become: true
   community.general.npm:
     name: npm-check-updates
     global: true
 
-- name: Install CLI utilities - madge (NPM)
+- name: Install Node CLI utilities - madge
   become: true
   community.general.npm:
     name: madge
@@ -93,8 +96,13 @@
 
 # Not recommended to launch Docker on boot for desktop systems
 # See: https://github.com/moby/moby/issues/38373
+- name: Disable Docker service
+  ansible.builtin.systemd:
+    name: docker.service
+    state: stopped
+    enabled: false
+
 - name: Enable Docker socket
-  become: true
-  shell: |
-    systemctl disable docker.service
-    systemctl enable docker.socket
+  ansible.builtin.systemd:
+    name: docker.socket
+    enabled: true
