@@ -43,14 +43,20 @@ if [ -f "/etc/arch-release" ]; then
   echo 'Update vim-CoC plugins'
   vim +CocUpdateSync +qa
 
-  echo 'Update VS Code extensions'
-  for ext in `code --list-extensions`
-  do 
-    code --install-extension "$ext" 
-  done
+  if command -v code &> /dev/null
+  then
+    echo 'Update VS Code extensions'
+    for ext in `code --list-extensions`
+    do 
+      code --install-extension "$ext" 
+    done
+  fi
 
-  echo 'Update Flatpak apps'
-  flatpak update
+  if command -v flatpak &> /dev/null
+  then
+    echo 'Update Flatpak apps'
+    flatpak update
+  fi
 else
   echo "Current operating system is not supported in dotfiles"
 fi
