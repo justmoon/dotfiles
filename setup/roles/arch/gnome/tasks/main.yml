@@ -1,19 +1,46 @@
 - name: Set GTK theme to Dracula
-  ansible.builtin.shell: |
-    gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
-    gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
+  community.general.dconf:
+    key: /org/gnome/desktop/interface/gtk-theme
+    value: "'Dracula'"
+    state: present
+
+- name: Set Shell theme to Dracula
+  community.general.dconf:
+    key: /org/gnome/desktop/wm/preferences/theme
+    value: "'Dracula'"
+    state: present
+
+- name: Set Gedit theme to Dracula
+  community.general.dconf:
+    key: /org/gnome/gedit/preferences/editor/scheme
+    value: "'Dracula'"
+    state: present
 
 - name: Map CAPSLOCK to ESC
-  command: gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape_shifted_capslock','lv3:ralt_switch']"
+  community.general.dconf:
+    key: /org/gnome/desktop/input-sources/xkb-options
+    value: "['caps:escape_shifted_capslock', 'lv3:ralt_switch']"
+    state: present
 
-- name: Lock system five seconds after screensaver triggers
-  command: gsettings set org.gnome.desktop.screensaver lock-delay 5
+- name: Find out GNOME Terminal profile ID
+  ansible.builtin.shell: gsettings get org.gnome.Terminal.ProfilesList default | awk -F \' '{print $2}'
+  register: gnome_terminal_profile
+  changed_when: false
 
-- name: Set gedit theme to Dracula
-  command: gsettings set org.gnome.gedit.preferences.editor scheme 'dracula'
+- name: Install Dracula GNOME Terminal theme
+  ansible.builtin.shell: $HOME/opt/dracula-gnome-terminal/install.sh --profile :{{ gnome_terminal_profile.stdout }} --scheme Dracula --skip-dircolors
 
-- name: Set monospace font to MonoLisa
-  command: gsettings set org.gnome.desktop.interface monospace-font-name 'MonoLisa 10'
+- name: Set system-wide monospace font to MonoLisa
+  community.general.dconf:
+    key: /org/gnome/desktop/interface/monospace-font-name
+    value: "'MonoLisa 10'"
+    state: present
+
+- name: Set GNOME Terminal font to MonoLisa
+  community.general.dconf:
+    key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/font
+    value: "'MonoLisa 11'"
+    state: present
 
 - name: Disable gnome-keyring-ssh
   shell: |
@@ -23,17 +50,32 @@
   args:
     creates: ~/.config/autostart/gnome-keyring-ssh.desktop
 
-- name: Find out GNOME Terminal profile ID
-  ansible.builtin.shell: gsettings get org.gnome.Terminal.ProfilesList default | awk -F \' '{print $2}'
-  register: gnome_terminal_profile
+- name: Set GNOME Terminal settings - Use system font
+  community.general.dconf:
+    key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/use-system-font
+    value: "false"
+    state: present
 
-- name: Install Dracula GNOME Terminal theme
-  ansible.builtin.shell: $HOME/opt/dracula-gnome-terminal/install.sh --profile :{{ gnome_terminal_profile.stdout }} --scheme Dracula --skip-dircolors
+- name: Set GNOME Terminal settings - Default size columns
+  community.general.dconf:
+    key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/default-size-columns
+    value: 100
+    state: present
 
-- name: Set GNOME Terminal settings
-  ansible.builtin.shell: |
-    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/ font 'MonoLisa 11'
-    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/ use-system-font false
-    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/ default-size-columns 100
-    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/ default-size-rows 28
-    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/ bold-color-same-as-fg true
+- name: Set GNOME Terminal settings - Default size rows
+  community.general.dconf:
+    key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/default-size-rows
+    value: 28
+    state: present
+
+- name: Set GNOME Terminal settings - Bold color same as foreground
+  community.general.dconf:
+    key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/bold-color-same-as-fg
+    value: "true"
+    state: present
+
+- name: Lock system five seconds after screensaver triggers
+  community.general.dconf:
+    key: /org/gnome/desktop/screensaver/lock-delay
+    value: "uint32 5"
+    state: present
