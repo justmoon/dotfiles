@@ -13,7 +13,7 @@
 - name: Set Gedit theme to Dracula
   community.general.dconf:
     key: /org/gnome/gedit/preferences/editor/scheme
-    value: "'Dracula'"
+    value: "'dracula'"
     state: present
 
 - name: Map CAPSLOCK to ESC
