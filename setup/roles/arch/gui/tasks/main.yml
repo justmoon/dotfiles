@@ -13,6 +13,7 @@
       - pipewire-pulse
       - pipewire-jack
       - wireplumber
+      - papirus-icon-theme
     state: present
     # Automatically remove conflicting packages
     # (e.g. remove pulseaudio when installing pipewire-pulse)

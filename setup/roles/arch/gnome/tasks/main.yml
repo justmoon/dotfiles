@@ -3,7 +3,7 @@
     key: /org/gnome/desktop/interface/color-scheme
     value: "'prefer-dark'"
     state: present
-    
+
 - name: Set GTK theme to Dracula
   community.general.dconf:
     key: /org/gnome/desktop/interface/gtk-theme
@@ -20,6 +20,12 @@
   community.general.dconf:
     key: /org/gnome/gedit/preferences/editor/scheme
     value: "'dracula'"
+    state: present
+
+- name: Set icon theme to Papirus
+  community.general.dconf:
+    key: /org/gnome/desktop/interface/icon-theme
+    value: "'Papirus-Dark'"
     state: present
 
 - name: Map CAPSLOCK to ESC
