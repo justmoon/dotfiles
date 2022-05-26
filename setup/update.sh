@@ -37,9 +37,6 @@ if [ -f "/etc/arch-release" ]; then
   echo 'Update packages'
   yay -Suy
 
-  echo 'Update vim plugins'
-  vim +'PlugUpdate --sync' +qa
-
   echo 'Update vim-CoC plugins'
   vim +CocUpdateSync +qa
 

@@ -1,7 +1,3 @@
-[".vim/autoload/plug.vim"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-    refreshPeriod = "168h"
 [".local/share/gedit/styles/dracula.xml"]
     type = "file"
     url = "https://raw.githubusercontent.com/dracula/gedit/master/dracula.xml"
@@ -11,4 +7,79 @@
     exact = true
     url = "https://github.com/dracula/gtk/archive/master.tar.gz"
     stripComponents = 1
+    refreshPeriod = "168h"
+
+[".vim/pack/themes/start/dracula"]
+    type = "git-repo"
+    url = "https://github.com/dracula/vim.git"
+    refreshPeriod = "168h"
+[".vim/pack/vendor/start/coc"]
+    type = "git-repo"
+    url = "https://github.com/neoclide/coc.nvim"
+    refreshPeriod = "168h"
+    [".vim/pack/vendor/start/coc".clone]
+        args = ["--branch=release"]
+[".vim/pack/vendor/start/fugitive"]
+    type = "git-repo"
+    url = "https://github.com/tpope/vim-fugitive.git"
+    refreshPeriod = "168h"
+[".vim/pack/vendor/start/sensible"]
+    type = "git-repo"
+    url = "https://github.com/tpope/vim-sensible.git"
+    refreshPeriod = "168h"
+[".vim/pack/vendor/start/surround"]
+    type = "git-repo"
+    url = "https://github.com/tpope/vim-surround.git"
+    refreshPeriod = "168h"
+[".vim/pack/vendor/start/abolish"]
+    type = "git-repo"
+    url = "https://github.com/tpope/vim-abolish.git"
+    refreshPeriod = "168h"
+[".vim/pack/vendor/start/fzf"]
+    type = "git-repo"
+    url = "https://github.com/junegunn/fzf.git"
+    refreshPeriod = "168h"
+[".vim/pack/vendor/start/fzf-vim"]
+    type = "git-repo"
+    url = "https://github.com/junegunn/fzf.vim.git"
+    refreshPeriod = "168h"
+[".vim/pack/vendor/start/gitgutter"]
+    type = "git-repo"
+    url = "https://github.com/airblade/vim-gitgutter.git"
+    refreshPeriod = "168h"
+[".vim/pack/vendor/start/nerdtree"]
+    type = "git-repo"
+    url = "https://github.com/preservim/nerdtree.git"
+    refreshPeriod = "168h"
+[".vim/pack/vendor/start/nerdcommenter"]
+    type = "git-repo"
+    url = "https://github.com/preservim/nerdcommenter.git"
+    refreshPeriod = "168h"
+[".vim/pack/vendor/start/vista"]
+    type = "git-repo"
+    url = "https://github.com/liuchengxu/vista.vim.git"
+    refreshPeriod = "168h"
+[".vim/pack/vendor/start/move"]
+    type = "git-repo"
+    url = "https://github.com/matze/vim-move.git"
+    refreshPeriod = "168h"
+[".vim/pack/vendor/start/lightline"]
+    type = "git-repo"
+    url = "https://github.com/itchyny/lightline.vim.git"
+    refreshPeriod = "168h"
+[".vim/pack/vendor/start/signature"]
+    type = "git-repo"
+    url = "https://github.com/kshenoy/vim-signature.git"
+    refreshPeriod = "168h"
+[".vim/pack/vendor/start/easydir"]
+    type = "git-repo"
+    url = "https://github.com/duggiefresh/vim-easydir.git"
+    refreshPeriod = "168h"
+[".vim/pack/vendor/start/mundo"]
+    type = "git-repo"
+    url = "https://github.com/simnalamburt/vim-mundo.git"
+    refreshPeriod = "168h"
+[".vim/pack/vendor/start/polyglot"]
+    type = "git-repo"
+    url = "https://github.com/sheerun/vim-polyglot.git"
     refreshPeriod = "168h"

@@ -55,6 +55,3 @@
     name: oh-my-zsh-git
     use: makepkg
     state: present
-
-- name: Install VIM plugins
-  command: vim +'PlugInstall --sync' +qa

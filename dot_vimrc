@@ -44,55 +44,6 @@ au FocusLost,WinLeave * :silent! w
 " Show whitespace
 set list lcs=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 
-" vim-plug: load plugins
-call plug#begin('~/.vim/plugged')
-
-Plug 'dracula/vim', { 'as': 'dracula' }
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-Plug 'preservim/nerdtree'
-
-Plug 'tpope/vim-fugitive'
-
-Plug 'mlaursen/vim-react-snippets'
-
-Plug 'tpope/vim-sensible'
-
-Plug 'tpope/vim-surround'
-
-Plug 'tpope/vim-abolish'
-
-Plug 'junegunn/fzf'
-
-Plug 'junegunn/fzf.vim'
-
-Plug 'junegunn/goyo.vim'
-
-Plug 'junegunn/limelight.vim'
-
-Plug 'airblade/vim-gitgutter'
-
-Plug 'preservim/nerdcommenter'
-
-Plug 'liuchengxu/vista.vim'
-
-Plug 'matze/vim-move'
-
-Plug 'itchyny/lightline.vim'
-
-Plug 'kshenoy/vim-signature'
-
-Plug 'duggiefresh/vim-easydir'
-
-Plug 'simnalamburt/vim-mundo'
-
-Plug 'sheerun/vim-polyglot'
-
-Plug 'styled-components/vim-styled-components'
-
-call plug#end()
-
 " json-vim: Do not hide quotes in JSON files
 let g:vim_json_conceal = 0
 
