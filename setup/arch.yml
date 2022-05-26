@@ -4,21 +4,27 @@
   roles:
     - arch/git
     - arch/yay
-    - arch/node
     - arch/cli-utils
     - arch/node-utils
     - arch/zsh
-    - arch/docker
-    - arch/go
     - arch/vim
     - arch/user
 
 - hosts: gui
   roles:
-    - arch/code
     - arch/gui-utils
     - arch/kvm-guest
     - arch/gnome-terminal
     - arch/fonts
     - arch/gnome
     - arch/flatpak
+
+- hosts: dev
+  roles:
+    - arch/docker
+    - arch/go
+    - arch/node
+
+- hosts: dev:&gui
+  roles:
+    - arch/code

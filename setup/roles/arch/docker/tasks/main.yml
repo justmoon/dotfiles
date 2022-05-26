@@ -4,6 +4,7 @@
     name:
       - docker
       - docker-compose
+      - kubectl
     state: present
 
 # Not recommended to launch Docker on boot for desktop systems

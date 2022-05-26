@@ -1,6 +1,23 @@
+{{/* This allows us to keep our existing settings when re-generating this config file */}}
+{{- $gui := "" -}}
+{{- if hasKey .feat "gui" -}}
+{{-   $gui = .feat.gui -}}
+{{- else -}}
+{{-   $gui = "false" -}}
+{{- end -}}
+{{- $dev := "" -}}
+{{- if hasKey .feat "dev" -}}
+{{-   $dev = .feat.dev -}}
+{{- else -}}
+{{-   $dev = "false" -}}
+{{- end -}}
+[data.feat]
+
+# Will this machine have a graphical user interface?
+gui = {{ $gui }}
+
+# Will this machine be used for development?
+dev = {{ $dev }}
+
 [diff]
 exclude = ["scripts"]
-
-[data.feat]
-# Will this machine have a graphical user interface?
-gui = false
