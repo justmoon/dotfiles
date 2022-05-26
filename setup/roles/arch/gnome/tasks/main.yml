@@ -1,3 +1,9 @@
+- name: Enable dark mode
+  community.general.dconf:
+    key: /org/gnome/desktop/interface/color-scheme
+    value: "'prefer-dark'"
+    state: present
+    
 - name: Set GTK theme to Dracula
   community.general.dconf:
     key: /org/gnome/desktop/interface/gtk-theme
