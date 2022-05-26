@@ -40,7 +40,3 @@
   kewlfft.aur.aur:
     name: ttf-meslo-nerd-font-powerlevel10k
     use: yay
-
-- name: update font-cache
-  become: true
-  command: fc-cache -fv
