@@ -69,7 +69,7 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'junegunn/goyo.vim'
 
-Plug 'junegunn/limelight'
+Plug 'junegunn/limelight.vim'
 
 Plug 'airblade/vim-gitgutter'
 
