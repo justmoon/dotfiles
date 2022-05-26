@@ -1,4 +1,4 @@
-{{ .chezmoi.hostname }} ansible_connection=local
+{{ .chezmoi.hostname }} ansible_connection=local ansible_python_interpreter=auto_silent
 
 {{- if .feat.gui }}
 
