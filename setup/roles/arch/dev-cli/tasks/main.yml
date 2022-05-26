@@ -1,0 +1,63 @@
+- name: Install Git
+  become: true
+  community.general.pacman:
+    name:
+      - git
+      - docker
+      - docker-compose
+      - kubectl
+      - nodejs
+      - npm
+      - go
+
+- name: Configure git
+  ansible.builtin.shell: |
+    git config --global push.default simple
+    git config --global alias.up 'pull --rebase --autostash'
+    git config --global diff.tool vscode
+    git config --global difftool.vscode.cmd "code --wait --diff \$LOCAL \$REMOTE"
+    git config --global merge.tool vscode
+    git config --global mergetool.vscode.cmd "code --wait \$MERGED"
+    git config --global mergetool.keepBackup false
+    git config --global init.defaultBranch main
+
+- name: Install Yarn
+  become: true
+  community.general.npm:
+    name: yarn
+    global: true
+
+- name: Disable yarn telemetry
+  command: yarn config set --home enableTelemetry 0
+
+- name: Install CLI utilities - http-server (NPM)
+  become: true
+  community.general.npm:
+    name: http-server
+    global: true
+
+- name: Install CLI utilities - zx (NPM)
+  become: true
+  community.general.npm:
+    name: zx
+    global: true
+
+- name: Install CLI utilities - npm-check-updates (NPM)
+  become: true
+  community.general.npm:
+    name: npm-check-updates
+    global: true
+
+- name: Install CLI utilities - madge (NPM)
+  become: true
+  community.general.npm:
+    name: madge
+    global: true
+
+# Not recommended to launch Docker on boot for desktop systems
+# See: https://github.com/moby/moby/issues/38373
+- name: Enable Docker socket
+  become: true
+  shell: |
+    systemctl disable docker.service
+    systemctl enable docker.socket

@@ -22,3 +22,18 @@
       >> ~/.config/autostart/gnome-keyring-ssh.desktop
   args:
     creates: ~/.config/autostart/gnome-keyring-ssh.desktop
+
+- name: Find out GNOME Terminal profile ID
+  ansible.builtin.shell: gsettings get org.gnome.Terminal.ProfilesList default | awk -F \' '{print $2}'
+  register: gnome_terminal_profile
+
+- name: Install Dracula GNOME Terminal theme
+  ansible.builtin.shell: $HOME/opt/dracula-gnome-terminal/install.sh --profile :{{ gnome_terminal_profile.stdout }} --scheme Dracula --skip-dircolors
+
+- name: Set GNOME Terminal settings
+  ansible.builtin.shell: |
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/ font 'MonoLisa 11'
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/ use-system-font false
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/ default-size-columns 100
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/ default-size-rows 28
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/ bold-color-same-as-fg true

@@ -1,0 +1,46 @@
+- name: Install GUI utilities
+  become: true
+  community.general.pacman:
+    name:
+      - firefox
+      - wireshark-qt
+      - gimp
+      - inkscape
+      # Enable automatic screen brightness
+      - iio-sensor-proxy
+      - mesa-utils
+      - pipewire
+      - pipewire-pulse
+      - pipewire-jack
+      - wireplumber
+    state: present
+    # Automatically remove conflicting packages
+    # (e.g. remove pulseaudio when installing pipewire-pulse)
+    # Magical option see: https://unix.stackexchange.com/a/584001
+    extra_args: --ask 4 --noconfirm
+
+- name: Install fonts
+  become: true
+  community.general.pacman:
+    name:
+      - ttf-hack
+      - ttf-font-awesome
+      - ttf-dejavu
+      - ttf-ibm-plex
+      - ttf-roboto
+      - noto-fonts
+      - noto-fonts-emoji
+      - ttf-croscore
+      - powerline-fonts
+    state: present
+
+- name: Installing fonts (AUR)
+  become: true
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: ttf-meslo-nerd-font-powerlevel10k
+    use: yay
+
+- name: update font-cache
+  become: true
+  command: fc-cache -fv

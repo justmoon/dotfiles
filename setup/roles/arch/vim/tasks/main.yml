@@ -1,9 +1,0 @@
-- name: Install VIM
-  become: true
-  community.general.pacman:
-    name:
-      - vim
-    state: present
-
-- name: Install VIM plugins
-  command: vim +'PlugInstall --sync' +qa

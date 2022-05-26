@@ -41,4 +41,20 @@
       - smartmontools
       - fwupd
       - github-cli
+      - zsh
+      - zsh-completions
+      - zsh-syntax-highlighting
+      - zsh-theme-powerlevel10k
+      - vim
     state: present
+
+- name: Install Oh My ZSH
+  become: true
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: oh-my-zsh-git
+    use: makepkg
+    state: present
+
+- name: Install VIM plugins
+  command: vim +'PlugInstall --sync' +qa
