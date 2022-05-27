@@ -11,6 +11,8 @@
     - arch/flatpak
 
 - hosts: dev
+  vars:
+    main_user: "{{ ansible_user_id }}"
   roles:
     - arch/dev-cli
 

@@ -106,3 +106,10 @@
   ansible.builtin.systemd:
     name: docker.socket
     enabled: true
+
+- name: Create workspace
+  become: true
+  ansible.builtin.file:
+    name: /opt/workspace
+    state: directory
+    owner: "{{ ansible_user_id }}"
