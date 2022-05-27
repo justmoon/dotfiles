@@ -16,6 +16,12 @@
     scope: global
     value: simple
 
+- name: Configure git - rebase to reconcile pulls
+  community.general.git_config:
+    name: pull.rebase
+    scope: global
+    value: true
+
 - name: Configure git - 'git up' alias
   community.general.git_config:
     name: alias.up
