@@ -28,6 +28,12 @@
     value: "'Papirus-Dark'"
     state: present
 
+- name: Disable hot corners
+  community.general.dconf:
+    key: /org/gnome/desktop/interface/enable-hot-corners
+    value: "false"
+    state: present
+
 - name: Map CAPSLOCK to ESC
   community.general.dconf:
     key: /org/gnome/desktop/input-sources/xkb-options
