@@ -53,7 +53,7 @@
 
 - name: Set GNOME Terminal font to MonoLisa
   community.general.dconf:
-    key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/font
+    key: /org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/font
     value: "'MonoLisa 11'"
     state: present
 
@@ -67,49 +67,49 @@
 
 - name: Set GNOME Terminal settings - use system font
   community.general.dconf:
-    key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/use-system-font
+    key: /org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/use-system-font
     value: "false"
     state: present
 
 - name: Set GNOME Terminal settings - default size columns
   community.general.dconf:
-    key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/default-size-columns
+    key: /org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/default-size-columns
     value: 100
     state: present
 
 - name: Set GNOME Terminal settings - default size rows
   community.general.dconf:
-    key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/default-size-rows
+    key: /org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/default-size-rows
     value: 28
     state: present
 
 - name: Set GNOME Terminal settings - color palette
   community.general.dconf:
-    key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/palette
+    key: /org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/palette
     value: "['#262626', '#E356A7', '#42E66C', '#E4F34A', '#9B6BDF', '#E64747', '#75D7EC', '#EFA554', '#7A7A7A', '#FF79C6', '#50FA7B', '#F1FA8C', '#BD93F9', '#FF5555', '#8BE9FD', '#FFB86C']"
     state: present
 
 - name: Set GNOME Terminal settings - background color
   community.general.dconf:
-    key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/background-color
+    key: /org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/background-color
     value: "'#282A36'"
     state: present
 
 - name: Set GNOME Terminal settings - foreground color
   community.general.dconf:
-    key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/foreground-color
+    key: /org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/foreground-color
     value: "'#F8F8F2'"
     state: present
 
 - name: Set GNOME Terminal settings - use theme colors
   community.general.dconf:
-    key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/use-theme-colors
+    key: /org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/use-theme-colors
     value: "false"
     state: present
 
 - name: Set GNOME Terminal settings - bold color same as foreground
   community.general.dconf:
-    key: /org/gnome/terminal/legacy/profiles:/{{ gnome_terminal_profile.stdout }}:/bold-color-same-as-fg
+    key: /org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/bold-color-same-as-fg
     value: "true"
     state: present
 
