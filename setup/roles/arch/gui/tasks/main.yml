@@ -34,10 +34,3 @@
       - ttf-croscore
       - powerline-fonts
     state: present
-
-- name: Installing fonts (AUR)
-  become: true
-  become_user: aur_builder
-  kewlfft.aur.aur:
-    name: ttf-meslo-nerd-font-powerlevel10k
-    use: yay
