@@ -87,12 +87,14 @@
 # Not recommended to launch Docker on boot for desktop systems
 # See: https://github.com/moby/moby/issues/38373
 - name: Disable Docker service
+  become: true
   ansible.builtin.systemd:
     name: docker.service
     state: stopped
     enabled: false
 
 - name: Enable Docker socket
+  become: true
   ansible.builtin.systemd:
     name: docker.socket
     enabled: true
