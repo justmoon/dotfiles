@@ -28,30 +28,6 @@
     scope: global
     value: 'pull --rebase --autostash'
 
-- name: Configure git - set VS Code as diff tool
-  community.general.git_config:
-    name: diff.tool
-    scope: global
-    value: vscode
-
-- name: Configure git - diff command
-  community.general.git_config:
-    name: difftool.vscode.cmd
-    scope: global
-    value: "code --wait --diff $LOCAL $REMOTE"
-
-- name: Configure git - set VS Code as merge tool
-  community.general.git_config:
-    name: merge.tool
-    scope: global
-    value: vscode
-
-- name: Configure git - merge command
-  community.general.git_config:
-    name: mergetool.vscode.cmd
-    scope: global
-    value: "code --wait $MERGED"
-
 - name: Configure git - automatically clean up backups
   community.general.git_config:
     name: mergetool.keepBackup
