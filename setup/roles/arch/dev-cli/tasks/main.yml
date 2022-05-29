@@ -64,6 +64,14 @@
     scope: global
     value: main
 
+- name: Install Node CLI utilities - nvm
+  become: true
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: nvm
+    use: makepkg
+    state: present
+
 - name: Install Node CLI utilities - yarn
   become: true
   community.general.npm:
