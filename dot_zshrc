@@ -174,7 +174,7 @@ fi
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/config
 
 # pnpm
-export PNPM_HOME="/home/moon/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 
 # Provide a file where local-only zshrc commands can live
 [[ ! -f ~/.local.zsh ]] || source ~/.local.zsh
