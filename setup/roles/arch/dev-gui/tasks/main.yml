@@ -1,3 +1,10 @@
+- name: Install development GUI utilities
+  become: true
+  community.general.pacman:
+    name:
+      - wireshark-qt
+    state: present
+
 - name: Install VS Code
   become: true
   become_user: aur_builder

@@ -2,12 +2,8 @@
   become: true
   community.general.pacman:
     name:
-      - firefox
-      - wireshark-qt
-      - gimp
-      - inkscape
-      # Enable automatic screen brightness
-      - iio-sensor-proxy
+      - flatpak
+      - iio-sensor-proxy  # enable automatic screen brightness
       - mesa-utils
       - pipewire
       - pipewire-pulse
@@ -19,6 +15,12 @@
     # (e.g. remove pulseaudio when installing pipewire-pulse)
     # Magical option see: https://unix.stackexchange.com/a/584001
     extra_args: --ask 4 --noconfirm
+
+- name: Add the Flathub flatpak repository remote
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
 
 - name: Install fonts
   become: true

@@ -1,0 +1,8 @@
+- name: Install GUI utilities
+  become: true
+  community.general.pacman:
+    name:
+      - gimp
+      - inkscape
+      - blender
+    state: present

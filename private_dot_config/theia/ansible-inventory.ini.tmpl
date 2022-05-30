@@ -11,3 +11,21 @@
 [dev]
 {{ .chezmoi.hostname }}
 {{- end }}
+
+{{- if .feat.creative }}
+
+[creative]
+{{ .chezmoi.hostname }}
+{{- end}}
+
+{{- if .feat.social }}
+
+[social]
+{{ .chezmoi.hostname }}
+{{- end}}
+
+{{- if .feat.entertainment }}
+
+[entertainment]
+{{ .chezmoi.hostname }}
+{{- end}}

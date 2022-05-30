@@ -8,7 +8,6 @@
     - arch/gui
     - arch/kvm-guest
     - arch/gnome
-    - arch/flatpak
 
 - hosts: dev
   vars:
@@ -19,6 +18,18 @@
 - hosts: dev:&gui
   roles:
     - arch/dev-gui
+
+- hosts: creative:&gui
+  roles:
+    - arch/creative-gui
+
+- hosts: social:&gui
+  roles:
+    - linux/social-flatpak
+
+- hosts: entertainment:&gui
+  roles:
+    - linux/entertainment-flatpak
 
 - hosts: all
   vars:

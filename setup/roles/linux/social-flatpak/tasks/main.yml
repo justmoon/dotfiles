@@ -1,0 +1,17 @@
+- name: Install Signal from Flathub
+  community.general.flatpak:
+    name: org.signal.Signal
+    state: present
+
+- name: Install Discord from Flathub
+  community.general.flatpak:
+    name: com.discordapp.Discord
+    state: present
+
+- name: Install Slack from Flathub
+  community.general.flatpak:
+    name: com.slack.Slack
+    state: present
+
+
+

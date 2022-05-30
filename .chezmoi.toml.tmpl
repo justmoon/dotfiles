@@ -7,5 +7,14 @@ gui = {{ or .feat.gui false }}
 # Will this machine be used for development?
 dev = {{ or .feat.dev false }}
 
+# Should creativity apps be installed?
+creative = {{ or .feat.creative false }}
+
+# Should social/chat apps be installed?
+social = {{ or .feat.social false }}
+
+# Should games and entertainment apps be installed?
+entertainment = {{ or .feat.entertainment false }}
+
 [diff]
 exclude = ["scripts"]

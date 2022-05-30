@@ -1,0 +1,4 @@
+- name: Install Spotify from Flathub
+  community.general.flatpak:
+    name: com.spotify.Client
+    state: present
