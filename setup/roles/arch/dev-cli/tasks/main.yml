@@ -22,6 +22,12 @@
     scope: global
     value: true
 
+- name: Configure git - enable autosquash
+  community.general.git_config:
+    name: rebase.autoSquash
+    scope: global
+    value: true
+
 - name: Configure git - 'git up' alias
   community.general.git_config:
     name: alias.up
