@@ -6,26 +6,22 @@
 {{ .chezmoi.hostname }}
 {{- end }}
 
-{{- if .feat.dev }}
-
 [dev]
+{{- if .feat.dev }}
 {{ .chezmoi.hostname }}
 {{- end }}
 
-{{- if .feat.creative }}
-
 [creative]
+{{- if .feat.creative }}
 {{ .chezmoi.hostname }}
 {{- end}}
-
-{{- if .feat.social }}
 
 [social]
+{{- if .feat.social }}
 {{ .chezmoi.hostname }}
 {{- end}}
 
-{{- if .feat.entertainment }}
-
 [entertainment]
+{{- if .feat.entertainment }}
 {{ .chezmoi.hostname }}
 {{- end}}
