@@ -9,6 +9,7 @@
       - nodejs
       - npm
       - go
+      - man-db
 
 - name: Configure git - default push action
   community.general.git_config:
