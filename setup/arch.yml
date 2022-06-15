@@ -31,6 +31,10 @@
   roles:
     - linux/entertainment-flatpak
 
+- hosts: dnsproxy
+  roles:
+    - arch/dns-proxy
+
 - hosts: all
   vars:
     main_user: "{{ ansible_user_id }}"

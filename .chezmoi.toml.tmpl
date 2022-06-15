@@ -16,5 +16,8 @@ social = {{ or .feat.social false }}
 # Should games and entertainment apps be installed?
 entertainment = {{ or .feat.entertainment false }}
 
+# Should this machine run a DNS cache and DNS over TLS proxy?
+dnsproxy = {{ or .feat.dnsProxy false }}
+
 [diff]
 exclude = ["scripts"]

@@ -1,4 +1,4 @@
-- name: Install Git
+- name: Install dev utilities
   become: true
   community.general.pacman:
     name:

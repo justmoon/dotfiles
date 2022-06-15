@@ -1,0 +1,24 @@
+- name: Install DNS cache (dnsmasq & stubby)
+  become: true
+  community.general.pacman:
+    name:
+      - dnsmasq
+      - stubby
+
+- name: Setup dnsmasq config file
+  become: true
+  ansible.builtin.template:
+    src: files/dnsmasq.conf
+    dest: /etc/dnsmasq.conf
+      
+- name: Setup NetworkManager dnsmasq config
+  become: true
+  ansible.builtin.template:
+    src: files/nm-conf.d-dns.conf
+    dest: /etc/NetworkManager/conf.d/dns.conf
+
+- name: Setup stubby config
+  become: true
+  ansible.builtin.template:
+    src: files/stubby.yml
+    dest: /etc/stubby/stubby.yml

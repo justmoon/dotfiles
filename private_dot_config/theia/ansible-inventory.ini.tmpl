@@ -14,14 +14,19 @@
 [creative]
 {{- if .feat.creative }}
 {{ .chezmoi.hostname }}
-{{- end}}
+{{- end }}
 
 [social]
 {{- if .feat.social }}
 {{ .chezmoi.hostname }}
-{{- end}}
+{{- end }}
 
 [entertainment]
 {{- if .feat.entertainment }}
 {{ .chezmoi.hostname }}
-{{- end}}
+{{- end }}
+
+[dnsproxy]
+{{- if .feat.dnsproxy }}
+{{ .chezmoi.hostname }}
+{{- end }}
