@@ -2,12 +2,14 @@
   become: true
   community.general.pacman:
     name:
+      - base-devel
       - git
       - docker
       - docker-compose
       - kubectl
       - nodejs
       - npm
+      - rustup
       - go
       - man-db
 
