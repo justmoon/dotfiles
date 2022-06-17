@@ -67,5 +67,10 @@
   "gitlens.currentLine.enabled": false,
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.codeLens.enabled": false,
-  "gitlens.showWelcomeOnInstall": false
+  "gitlens.showWelcomeOnInstall": false,
+  "window.menuBarVisibility": "toggle",
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "windicss.sortOnSave": true
 }
