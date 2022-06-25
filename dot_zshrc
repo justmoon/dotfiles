@@ -58,7 +58,7 @@ DISABLE_AUTO_UPDATE="true"
 plugins=(git git-extras command-not-found npm wd docker httpie sudo systemd fasd golang kubectl yarn gh fzf nvm)
 
 # Path
-export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.local/share/pnpm:$HOME/.yarn/bin:$HOME/opt/AWS-ElasticBeanstalk-CLI-2.6.3/eb/linux/python2.7/:/usr/local/go/bin:$HOME/go/bin:$HOME/opt/android/sdk/platform-tools:$HOME/opt/android/sdk/tools:$HOME/opt/depot_tools:/usr/local/go/bin:$HOME/opt/go/bin:/home/moon/opt/google-cloud-sdk/bin:/usr/bin/core_perl:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.local/share/pnpm:$HOME/.yarn/bin:$HOME/.cargo/bin:$HOME/opt/AWS-ElasticBeanstalk-CLI-2.6.3/eb/linux/python2.7/:/usr/local/go/bin:$HOME/go/bin:$HOME/opt/android/sdk/platform-tools:$HOME/opt/android/sdk/tools:$HOME/opt/depot_tools:/usr/local/go/bin:$HOME/opt/go/bin:/home/moon/opt/google-cloud-sdk/bin:/usr/bin/core_perl:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
