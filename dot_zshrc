@@ -175,6 +175,8 @@ export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/config
 
 # pnpm
 export PNPM_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/pnpm"
+# pnpm uses tabtab for autocomplete support
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
 # Provide a file where local-only zshrc commands can live
 [[ ! -f ~/.local.zsh ]] || source ~/.local.zsh
