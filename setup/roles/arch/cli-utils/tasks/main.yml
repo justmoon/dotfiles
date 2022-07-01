@@ -5,6 +5,7 @@
       - openssh
       - httpie
       - ripgrep
+      - bat
       - pass
       - htop
       - fzf
