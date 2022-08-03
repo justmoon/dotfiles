@@ -134,6 +134,9 @@ alias gup='git pull --rebase --autostash'
 alias ggpu='git push -u origin $(current_branch) --follow-tags'
 compdef ggpu=git
 
+# Lazygit
+alias gg='lazygit'
+
 # Git remote shortcut conflicts with git-run
 unalias gr
 

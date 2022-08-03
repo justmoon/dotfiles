@@ -4,6 +4,7 @@
     name:
       - base-devel
       - git
+      - lazygit
       - docker
       - docker-compose
       - kubectl
@@ -35,13 +36,13 @@
   community.general.git_config:
     name: alias.up
     scope: global
-    value: 'pull --rebase --autostash'
+    value: "pull --rebase --autostash"
 
 - name: Configure git - automatically clean up backups
   community.general.git_config:
     name: mergetool.keepBackup
     scope: global
-    value: 
+    value:
 
 - name: Configure git - default branch 'main'
   community.general.git_config:
