@@ -2,6 +2,7 @@
   become: true
   community.general.pacman:
     name:
+      - wezterm
       - wireshark-qt
     state: present
 
