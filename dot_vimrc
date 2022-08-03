@@ -125,11 +125,6 @@ autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 " Gitgutter: Nicer remove sign
 let g:gitgutter_sign_removed = '–'
 
-" NERDTree: Better arrows
-let NERDTreeShowHidden=1
-let g:NERDTreeDirArrowExpandable = '⯈'
-let g:NERDTreeDirArrowCollapsible = '⯆'
-
 " Goyo: Also enable Limelight
 function! s:goyo_enter()
   Limelight
@@ -174,19 +169,8 @@ function! SearchVisualSelectionWithAg() range
   execute 'Ag' selection
 endfunction
 
-" NERDTree: Open with current file highlighted
-function! NERDTreeToggleInCurDir()
-  " If NERDTree is open in the current buffer
-  if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
-    exe ":NERDTreeClose"
-  else
-    exe ":NERDTreeFind"
-  endif
-endfunction
-
 " Leader mappings
 let mapleader=","
-"nnoremap <silent> <leader>q :call NERDTreeToggleInCurDir()<CR>
 nnoremap <silent> <leader>f :call ExplorerOpen(":Files")<CR>
 nnoremap <silent> <leader>; :BLines<CR>
 nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
