@@ -13,12 +13,6 @@
     type = "git-repo"
     url = "https://github.com/dracula/vim.git"
     refreshPeriod = "168h"
-[".vim/pack/vendor/start/coc"]
-    type = "git-repo"
-    url = "https://github.com/neoclide/coc.nvim"
-    refreshPeriod = "168h"
-    [".vim/pack/vendor/start/coc".clone]
-        args = ["--branch=release"]
 [".vim/pack/vendor/start/fugitive"]
     type = "git-repo"
     url = "https://github.com/tpope/vim-fugitive.git"
@@ -83,3 +77,4 @@
     type = "git-repo"
     url = "https://github.com/sheerun/vim-polyglot.git"
     refreshPeriod = "168h"
+
