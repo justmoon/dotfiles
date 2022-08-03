@@ -13,6 +13,11 @@
     stripComponents = 1
     refreshPeriod = "168h"
 
+[".config/nvim"]
+    type = "git-repo"
+    url = "https://github.com/AstroNvim/AstroNvim.git"
+    refreshPeriod = "168h"
+
 [".vim/pack/themes/start/dracula"]
     type = "git-repo"
     url = "https://github.com/dracula/vim.git"
