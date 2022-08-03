@@ -3,7 +3,7 @@
   community.general.pacman:
     name:
       - flatpak
-      - iio-sensor-proxy  # enable automatic screen brightness
+      - iio-sensor-proxy # enable automatic screen brightness
       - mesa-utils
       - pipewire
       - pipewire-pulse
@@ -35,4 +35,5 @@
       - noto-fonts-emoji
       - ttf-croscore
       - powerline-fonts
+      - ttf-nerd-fonts-symbols-mono
     state: present
