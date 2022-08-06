@@ -37,18 +37,6 @@ if [ -f "/etc/arch-release" ]; then
   echo 'Update packages'
   yay -Suy
 
-  echo 'Update vim-CoC plugins'
-  vim +CocUpdateSync +qa
-
-  if command -v code &> /dev/null
-  then
-    echo 'Update VS Code extensions'
-    for ext in `code --list-extensions`
-    do 
-      code --install-extension "$ext" 
-    done
-  fi
-
   if command -v flatpak &> /dev/null
   then
     echo 'Update Flatpak apps'
