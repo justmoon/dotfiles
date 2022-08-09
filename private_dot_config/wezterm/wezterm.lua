@@ -28,4 +28,5 @@ return {
 		"Symbols Nerd Font",
 	}),
 	keys = mykeys,
+	check_for_updates = false,
 }
