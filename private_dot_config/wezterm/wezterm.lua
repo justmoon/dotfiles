@@ -25,6 +25,7 @@ return {
 	window_decorations = "RESIZE",
 	font = wezterm.font_with_fallback({
 		"MonoLisa",
+		"IBM Plex Mono",
 		"Symbols Nerd Font",
 	}),
 	keys = mykeys,
