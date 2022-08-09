@@ -82,5 +82,6 @@
     "plaintext": false,
     "markdown": false
   },
-  "window.titleBarStyle": "custom"
+  "window.titleBarStyle": "custom",
+  "window.menuBarVisibility": "compact"
 }
