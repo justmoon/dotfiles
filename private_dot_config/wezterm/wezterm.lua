@@ -31,4 +31,6 @@ return {
 	keys = mykeys,
 	check_for_updates = false,
 	enable_scroll_bar = true,
+	initial_cols = 100,
+	initial_rows = 28,
 }
