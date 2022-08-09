@@ -72,7 +72,6 @@
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.codeLens.enabled": false,
   "gitlens.showWelcomeOnInstall": false,
-  "window.menuBarVisibility": "toggle",
   "editor.quickSuggestions": {
     "strings": true
   },
@@ -82,5 +81,6 @@
     "*": true,
     "plaintext": false,
     "markdown": false
-  }
+  },
+  "window.titleBarStyle": "custom"
 }
