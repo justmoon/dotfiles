@@ -148,6 +148,9 @@ alias ow="cd /opt/workspace"
 # FZF
 [[ ! -f ~/.config/zsh/fzf.zsh ]] || source ~/.config/zsh/fzf.zsh
 
+# Cht.sh FZF
+alias cht="~/.config/zsh/chtfzf.zsh query"
+
 # drill is basically dig...
 alias dig=drill
 
