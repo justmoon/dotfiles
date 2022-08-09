@@ -42,4 +42,4 @@
   community.general.git_config:
     name: mergetool.vscode.cmd
     scope: global
-    value: "code --wait $MERGED"
+    value: "code --wait --merge $REMOTE $LOCAL $BASE $MERGED"
