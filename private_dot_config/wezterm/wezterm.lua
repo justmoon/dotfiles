@@ -30,4 +30,5 @@ return {
 	}),
 	keys = mykeys,
 	check_for_updates = false,
+	enable_scroll_bar = true,
 }
