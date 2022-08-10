@@ -94,7 +94,7 @@ let g:lightline = {
   \ 'subseparator': { 'left': '', 'right': '' }
   \ }
 function! LightlineModified()
-  return &ft =~# 'help\|vimfiler' ? '' : &modified ? '🞼' : &modifiable ? '' : '-'
+  return &ft =~# 'help\|vimfiler' ? '' : &modified ? '✱' : &modifiable ? '' : '-'
 endfunction
 function! LightlineReadonly()
   return &ft !~? 'help\|vimfiler' && &readonly ? '' : ''
