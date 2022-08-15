@@ -83,5 +83,6 @@
     "markdown": false
   },
   "window.titleBarStyle": "custom",
-  "window.menuBarVisibility": "compact"
+  "window.menuBarVisibility": "compact",
+  "editor.experimental.stickyScroll.enabled": true
 }
