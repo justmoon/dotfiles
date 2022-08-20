@@ -42,6 +42,12 @@ if [ -f "/etc/arch-release" ]; then
     echo 'Update Flatpak apps'
     flatpak update
   fi
+
+  if command -v nvim &> /dev/null
+  then
+    echo 'Update Neovim plugins (PackerSync)'
+    nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+  fi
 else
   echo "Current operating system is not supported in dotfiles"
 fi
