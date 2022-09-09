@@ -34,10 +34,10 @@
     value: "false"
     state: present
 
-- name: Map CAPSLOCK to ESC
+- name: Use right ALT key as level-3 switch
   community.general.dconf:
     key: /org/gnome/desktop/input-sources/xkb-options
-    value: "['caps:escape_shifted_capslock', 'lv3:ralt_switch']"
+    value: "['lv3:ralt_switch']"
     state: present
 
 - name: Find out GNOME Terminal profile ID
