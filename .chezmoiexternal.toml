@@ -2,9 +2,9 @@
     type = "file"
     url = "https://raw.githubusercontent.com/dracula/gedit/master/dracula.xml"
     refreshPeriod = "168h"
-[".config/wezterm/dracula.lua"]
+[".config/wezterm/colors/dracula.toml"]
     type = "file"
-    url = "https://raw.githubusercontent.com/dracula/wezterm/main/dracula.lua"
+    url = "https://raw.githubusercontent.com/dracula/wezterm/main/dracula.toml"
     refreshPeriod = "168h"
 [".local/share/themes/Dracula"]
     type = "archive"

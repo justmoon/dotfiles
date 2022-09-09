@@ -1,5 +1,4 @@
 local wezterm = require("wezterm")
-local dracula = require("dracula")
 local mux = wezterm.mux
 local act = wezterm.action
 
@@ -13,14 +12,14 @@ for i = 1, 8 do
 	})
 end
 
--- Will become available in next release of Wezterm
---//wezterm.on("gui-startup", function(cmd)
---  local tab, pane, window = mux.spawn_window(cmd or {})
---  window:gui_window():maximize()
---end)
+-- Start maximized
+wezterm.on("gui-startup", function(cmd)
+	local tab, pane, window = mux.spawn_window(cmd or {})
+	window:gui_window():maximize()
+end)
 
 return {
-	colors = dracula,
+	color_scheme = "Dracula (Official)",
 	use_fancy_tab_bar = false,
 	window_decorations = "RESIZE",
 	font = wezterm.font_with_fallback({
