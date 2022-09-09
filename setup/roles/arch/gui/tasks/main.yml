@@ -43,3 +43,9 @@
   ansible.builtin.template:
     src: files/95-drop-ctrl-caps-esc-remap.hwdb
     dest: /etc/udev/hwdb.d/95-drop-ctrl-caps-esc-remap.hwdb
+
+- name: Setup Framework laptop key remap (CAPSLOCK -> ESC)
+  become: true
+  ansible.builtin.template:
+    src: files/95-framework-caps-esc-remap.hwdb
+    dest: /etc/udev/hwdb.d/95-framework-caps-esc-remap.hwdb
