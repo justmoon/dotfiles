@@ -115,3 +115,12 @@
     name: /opt/workspace
     state: directory
     owner: "{{ ansible_user_id }}"
+
+- name: Add user to 'docker' group
+  become: true
+  user:
+    name: "{{ main_user }}"
+    groups:
+      - docker
+    append: true
+    shell: /bin/zsh

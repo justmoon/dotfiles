@@ -43,3 +43,12 @@
     name: mergetool.vscode.cmd
     scope: global
     value: "code --wait --merge $REMOTE $LOCAL $BASE $MERGED"
+
+- name: Add user to 'wireshark' group
+  become: true
+  user:
+    name: "{{ main_user }}"
+    groups:
+      - wireshark
+    append: true
+    shell: /bin/zsh

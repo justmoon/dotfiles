@@ -16,6 +16,8 @@
     - arch/dev-cli
 
 - hosts: dev:&gui
+  vars:
+    main_user: "{{ ansible_user_id }}"
   roles:
     - arch/dev-gui
 

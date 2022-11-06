@@ -4,9 +4,6 @@
     name: "{{ main_user }}"
     groups:
       - wheel
-      - wireshark
-      - docker
-      - libvirt
       - lp
       - kvm
       - video
