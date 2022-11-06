@@ -1,23 +1,25 @@
-{{/* This config file template is written to keep our existing settings when re-generating it */}}
+{{/* This config file template is written to keep existing settings when re-generating it */}}
 [data.feat]
 
+{{- $feat := default (dict) (get . "feat") }}
+
 # Will this machine have a graphical user interface?
-gui = {{ or .feat.gui false }}
+gui = {{ default false (get $feat "gui") }}
 
 # Will this machine be used for development?
-dev = {{ or .feat.dev false }}
+dev = {{ default false (get $feat "dev") }}
 
 # Should creativity apps be installed?
-creative = {{ or .feat.creative false }}
+creative = {{ default false (get $feat "creative") }}
 
 # Should social/chat apps be installed?
-social = {{ or .feat.social false }}
+social = {{ default false (get $feat "social") }}
 
 # Should games and entertainment apps be installed?
-entertainment = {{ or .feat.entertainment false }}
+entertainment = {{ default false (get $feat "entertainment") }}
 
 # Should this machine run a DNS cache and DNS over TLS proxy?
-dnsproxy = {{ or .feat.dnsProxy false }}
+dnsproxy = {{ default false (get $feat "dnsproxy") }}
 
 [diff]
 exclude = ["scripts"]
