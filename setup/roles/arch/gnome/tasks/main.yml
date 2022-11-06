@@ -34,6 +34,12 @@
     value: "false"
     state: present
 
+- name: Disable natural scrolling
+  community.general.dconf:
+    key: /org/gnome/desktop/peripherals/touchpad/natural-scroll
+    value: "false"
+    state: present
+
 - name: Use right ALT key as level-3 switch
   community.general.dconf:
     key: /org/gnome/desktop/input-sources/xkb-options
