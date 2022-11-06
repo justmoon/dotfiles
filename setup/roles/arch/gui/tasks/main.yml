@@ -3,6 +3,7 @@
   community.general.pacman:
     name:
       - flatpak
+      - wezterm
       - iio-sensor-proxy # enable automatic screen brightness
       - mesa-utils
       - pipewire
