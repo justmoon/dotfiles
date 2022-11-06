@@ -39,7 +39,7 @@ sudo true
 
 # Arch install
 if [ -f "/etc/arch-release" ]; then
-  which ansible-playbook > /dev/null || sudo pacman -S ansible
+  which ansible-playbook > /dev/null || sudo pacman -S ansible python-psutil
   ansible-galaxy collection install --requirements-file $CHEZMOI_PATH/setup/arch_requirements.yml
   ansible-playbook --inventory-file $HOME/.config/theia/ansible-inventory.ini --become-method=sudo $CHEZMOI_PATH/setup/arch.yml
 else
