@@ -113,12 +113,9 @@ fi
 # - We explicitly call `nvm use [version]`
 # - We enter a directory with an .nvmrc (courtesy of the nvm oh-my-zsh plugin)
 #
-# Note that we need to load NVM before Oh-my-zsh to stop the nvm plugin from
-# loading it for us.
-#
 # We also need to set the default nvm version to `system` to ensure that
 # everything goes back to normal after we leave a folder with an .nvmrc.
-[ -s /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh --no-use
+NVM_LAZY=1
 NVM_AUTOLOAD=1
 
 source $ZSH/oh-my-zsh.sh
