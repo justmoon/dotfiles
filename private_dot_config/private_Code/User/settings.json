@@ -84,5 +84,7 @@
   },
   "window.titleBarStyle": "custom",
   "window.menuBarVisibility": "compact",
-  "editor.experimental.stickyScroll.enabled": true
+  "unocss.underline": false,
+  "editor.stickyScroll.enabled": true,
+  "references.preferredLocation": "view"
 }
