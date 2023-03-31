@@ -86,5 +86,10 @@
   "window.menuBarVisibility": "compact",
   "unocss.underline": false,
   "editor.stickyScroll.enabled": true,
-  "references.preferredLocation": "view"
+  "references.preferredLocation": "view",
+  "terminal.integrated.env.linux": {},
+  "vim.normalModeKeyBindingsNonRecursive": [{
+    "before": ["g", "s"],
+    "commands": ["workbench.action.showAllSymbols"]
+  }]
 }
