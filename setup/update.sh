@@ -65,4 +65,9 @@ else
   echo "Current operating system is not supported in dotfiles"
 fi
 
-
+# Apply tray icon overrides
+if command -v hardcode-tray &> /dev/null
+then
+    echo "Overriding hard-coded tray icons"
+    sudo --preserve-env hardcode-tray --apply
+fi
