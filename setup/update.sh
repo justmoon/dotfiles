@@ -32,6 +32,19 @@ while (( "$#" )); do
   shift
 done
 
+# Ask for the administrator password upfront
+echo 'Enter your password to update system software'
+sudo --validate
+
+# Keep sudo from timing out for the duration of this script
+sudo_refresh_interval=30
+while true
+do
+  sudo --validate
+  sleep $sudo_refresh_interval
+  kill -0 "$$" || exit
+done 2>/dev/null &
+
 # Arch system update
 if [ -f "/etc/arch-release" ]; then
   echo 'Update packages'
