@@ -155,14 +155,17 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
 [[ ! -f ~/.config/p10k/p10k.zsh ]] || source ~/.config/p10k/p10k.zsh
 
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
+  source /etc/profile.d/vte.sh
 fi
 
 # Load ripgrep config
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/config
 
 # Fast Node Manager
-eval "$(fnm env --use-on-cd)"
+if command -v fnm &> /dev/null
+then
+  eval "$(fnm env --use-on-cd)"
+fi
 
 # pnpm
 export PNPM_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/pnpm"
