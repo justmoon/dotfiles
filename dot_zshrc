@@ -55,7 +55,7 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras command-not-found npm wd docker httpie sudo systemd fasd golang kubectl yarn gh fzf nvm)
+plugins=(git git-extras command-not-found npm wd docker httpie sudo systemd fasd golang kubectl yarn gh fzf fnm)
 
 # Path
 export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.local/share/pnpm:$HOME/.yarn/bin:$HOME/.cargo/bin:$HOME/opt/AWS-ElasticBeanstalk-CLI-2.6.3/eb/linux/python2.7/:/usr/local/go/bin:$HOME/go/bin:$HOME/opt/android/sdk/platform-tools:$HOME/opt/android/sdk/tools:$HOME/opt/depot_tools:/usr/local/go/bin:$HOME/opt/go/bin:/home/moon/opt/google-cloud-sdk/bin:/usr/bin/core_perl:$PATH"
@@ -102,21 +102,6 @@ ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
-
-# NVM
-#
-# We want to use the system's Node.js by default. So we pass the --no-use
-# parameter, which incidentally also makes NVM load faster.
-#
-# NVM will activate when:
-#
-# - We explicitly call `nvm use [version]`
-# - We enter a directory with an .nvmrc (courtesy of the nvm oh-my-zsh plugin)
-#
-# We also need to set the default nvm version to `system` to ensure that
-# everything goes back to normal after we leave a folder with an .nvmrc.
-NVM_LAZY=1
-NVM_AUTOLOAD=1
 
 source $ZSH/oh-my-zsh.sh
 
@@ -175,6 +160,9 @@ fi
 
 # Load ripgrep config
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/config
+
+# Fast Node Manager
+eval "$(fnm env --use-on-cd)"
 
 # pnpm
 export PNPM_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/pnpm"

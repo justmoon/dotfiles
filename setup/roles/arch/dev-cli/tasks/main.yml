@@ -50,11 +50,11 @@
     scope: global
     value: main
 
-- name: Install Node CLI utilities - nvm
+- name: Install Node CLI utilities - fnm
   become: true
   become_user: aur_builder
   kewlfft.aur.aur:
-    name: nvm
+    name: fnm-bin
     use: makepkg
     state: present
 
