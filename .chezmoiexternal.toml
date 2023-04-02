@@ -6,6 +6,10 @@
     type = "file"
     url = "https://raw.githubusercontent.com/dracula/wezterm/main/dracula.toml"
     refreshPeriod = "168h"
+[".config/zellij/themes/dracula.kdl"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/dracula/zellij/master/dracula.kdl"
+    refreshPeriod = "168h"
 [".local/share/themes/Dracula"]
     type = "archive"
     exact = true

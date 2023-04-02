@@ -13,6 +13,7 @@
       - rustup
       - go
       - man-db
+      - zellij
 
 - name: Configure git - default push action
   community.general.git_config:
