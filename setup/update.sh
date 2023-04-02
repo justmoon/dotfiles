@@ -58,8 +58,8 @@ if [ -f "/etc/arch-release" ]; then
 
   if command -v nvim &> /dev/null
   then
-    echo 'Update Neovim plugins (PackerSync)'
-    nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+    echo 'Update Neovim plugins'
+    nvim --headless "+Lazy! sync" +qa
   fi
 else
   echo "Current operating system is not supported in dotfiles"
