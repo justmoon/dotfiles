@@ -125,6 +125,12 @@ unalias gr
 # Git pull shortcut conflicts with gitless
 unalias gl
 
+# Zellij
+function zr () { zellij run --name "$*" -- zsh -ic "$*";}
+function zrf () { zellij run --name "$*" --floating -- zsh -ic "$*";}
+function ze () { zellij edit "$*";}
+function zef () { zellij edit --floating "$*";}
+
 alias ow="cd /opt/workspace"
 
 # FZF
