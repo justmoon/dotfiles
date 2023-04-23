@@ -15,17 +15,16 @@ return {
       local luasnip = require("luasnip")
       local cmp = require("cmp")
 
+      opts.completion.completeopt = "menu,menuone,noselect"
+
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
+        ["<CR>"] = cmp.mapping.confirm({ select = false }),
+        ["<S-CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
         ["<Tab>"] = cmp.mapping(function(fallback)
           if luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
           elseif cmp.visible() then
-            local entry = cmp.get_selected_entry()
-            if not entry then
-              cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-            else
-              cmp.confirm()
-            end
+            cmp.confirm({ select = true })
           else
             fallback()
           end
