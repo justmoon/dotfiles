@@ -7,5 +7,10 @@
   {
     "key": "ctrl+up",
     "command": "git.stage"
+  },
+  // Close current tab
+  {
+    "key": "ctrl+w",
+    "command": "workbench.action.closeActiveEditor"
   }
 ]
