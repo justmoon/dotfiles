@@ -1,12 +1,21 @@
 #!/bin/bash
 
 # Catch Ctrl+C (SIGINT) and exit cleanly
-trap "echo -e '\nExiting...'; exit 0" SIGINT
+trap handle_sigint SIGINT
 
 wait_for_enter() {
 	echo -e "\033[1mWaiting to run: \033[32m$COMMAND\033[0m"
 	echo
+	WAITING_FOR_INPUT=true
 	read -p $'\033[0;1m<\033[34mENTER\033[0;1m> to run, <\033[34mCTRL+C\033[0;1m> to exit\033[0m '
+	WAITING_FOR_INPUT=false
+}
+
+handle_sigint() {
+	if [ "$WAITING_FOR_INPUT" = "true" ]; then
+		echo -e "\nExiting..."
+		exit 0
+	fi
 }
 
 # Parse flags
