@@ -1,6 +1,7 @@
 local wezterm = require("wezterm")
 local mux = wezterm.mux
 local act = wezterm.action
+local projects = require("menus.projects")
 
 -- This table will hold the configuration.
 local config = {}
@@ -10,6 +11,8 @@ local config = {}
 if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
+
+config.leader = { key = "b", mods = "CTRL" }
 
 config.keys = {}
 
@@ -21,6 +24,13 @@ for i = 1, 8 do
 		action = act.ActivateTab(i - 1),
 	})
 end
+
+local projects_input_selector = projects.get_input_selector()
+table.insert(config.keys, {
+	key = "e",
+	mods = "LEADER",
+	action = wezterm.action.InputSelector(projects_input_selector),
+})
 
 config.mouse_bindings = {
 	-- Change the default click behavior so that it only selects
