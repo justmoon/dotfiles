@@ -32,7 +32,7 @@ function project.startup(wezterm, workspace_name)
 		direction = "Bottom",
 		size = 0.5,
 	})
-	test_pane:send_text("rerun --suspend --once pnpm test\r")
+	test_pane:send_text("rerun --suspend pnpm test -- --run\r")
 
 	-- git tab
 	local git_tab, git_pane, _ = project_window:spawn_tab({})
