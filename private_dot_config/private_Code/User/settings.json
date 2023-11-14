@@ -116,4 +116,6 @@
       "commands": ["editor.action.goToTypeDefinition"]
     },
   ],
+  "shellformat.flag": "-i 2 -ci -bn",
+  "shellformat.useEditorConfig": true,
 }
