@@ -72,3 +72,9 @@
   ansible.builtin.template:
     src: files/95-lenovo-external-caps-esc-remap.hwdb
     dest: /etc/udev/hwdb.d/95-lenovo-external-caps-esc-remap.hwdb
+
+- name: Setup Logitech Keys Mini external keyboard key remap (CAPSLOCK -> ESC)
+  become: true
+  ansible.builtin.template:
+    src: files/95-logitech-keys-mini-caps-esc-remap.hwdb
+    dest: /etc/udev/hwdb.d/95-logitech-keys-mini-caps-esc-remap.hwdb
