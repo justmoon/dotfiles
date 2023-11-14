@@ -82,8 +82,13 @@
     "plaintext": false,
     "markdown": false
   },
+  "window.menuBarVisibility": "toggle",
+  "workbench.editor.showTabs": "single",
+  "workbench.layoutControl.type": "menu",
+  "workbench.activityBar.location": "hidden",
+  "editor.rulers": [80, 120],
+  "window.zoomLevel": 1,
   "window.titleBarStyle": "custom",
-  "window.menuBarVisibility": "compact",
   "unocss.underline": false,
   "editor.stickyScroll.enabled": true,
   "references.preferredLocation": "view",
@@ -105,7 +110,4 @@
       "commands": ["editor.action.goToTypeDefinition"]
     },
   ],
-  "editor.rulers": [
-    80, 120
-  ]
 }
