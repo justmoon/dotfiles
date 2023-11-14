@@ -114,7 +114,18 @@
     {
       "before": ["g", "y"],
       "commands": ["editor.action.goToTypeDefinition"]
-    },
+    }
+  ],
+  "cSpell.enabledLanguageIds": [
+    "asciidoc",
+    "git-commit",
+    "latex",
+    "less",
+    "markdown",
+    "plaintext",
+    "restructuredtext",
+    "scminput",
+    "text"
   ],
   "shellformat.flag": "-i 2 -ci -bn",
   "shellformat.useEditorConfig": true,
