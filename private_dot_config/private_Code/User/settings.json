@@ -93,6 +93,12 @@
   "editor.stickyScroll.enabled": true,
   "references.preferredLocation": "view",
   "terminal.integrated.env.linux": {},
+  "vim.handleKeys": {
+    "<C-d>": true,
+    "<C-s>": false,
+    "<C-z>": false,
+    "<C-p>": false
+  },
   "vim.normalModeKeyBindingsNonRecursive": [
     // Search symbols
     {
