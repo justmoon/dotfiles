@@ -64,10 +64,16 @@ config.hide_tab_bar_if_only_one_tab = true
 config.window_decorations = "RESIZE"
 
 config.font = wezterm.font_with_fallback({
-	"MonoLisa",
+	"Monaspace Neon",
 	"IBM Plex Mono",
 	"Symbols Nerd Font",
 })
+
+config.harfbuzz_features = { 'calt', 'liga', 'ss01', 'ss02', 'ss03', 'ss04' }
+
+config.freetype_load_target = "HorizontalLcd"
+
+config.warn_about_missing_glyphs = false
 
 config.check_for_updates = false
 

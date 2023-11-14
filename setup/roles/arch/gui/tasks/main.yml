@@ -45,6 +45,8 @@
       - ttf-croscore
       - powerline-fonts
       - ttf-nerd-fonts-symbols-1000-em
+      - otf-monaspace
+      - ttf-monaspace-variable
     state: present
 
 - name: Setup Drop CTRL key remap (CAPSLOCK -> ESC)

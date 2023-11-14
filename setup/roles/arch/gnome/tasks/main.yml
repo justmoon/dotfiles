@@ -51,10 +51,10 @@
   register: gnome_terminal_profile
   changed_when: false
 
-- name: Set system-wide monospace font to MonoLisa
+- name: Set system-wide monospace font to Monaspace Neon
   community.general.dconf:
     key: /org/gnome/desktop/interface/monospace-font-name
-    value: "'MonoLisa 10'"
+    value: "'Monaspace Neon 10'"
     state: present
 
 - name: Set GNOME Terminal font to MonoLisa
