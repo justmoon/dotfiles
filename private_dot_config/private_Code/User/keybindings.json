@@ -12,5 +12,10 @@
   {
     "key": "ctrl+w",
     "command": "workbench.action.closeActiveEditor"
+  },
+  // Toggle file explorer sidebar
+  {
+    "key": "ctrl+\\",
+    "command": "workbench.action.toggleSidebarVisibility"
   }
 ]
