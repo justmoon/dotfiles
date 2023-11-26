@@ -54,13 +54,13 @@
 - name: Set system-wide monospace font to Monaspace Neon
   community.general.dconf:
     key: /org/gnome/desktop/interface/monospace-font-name
-    value: "'Monaspace Neon 10'"
+    value: "'Monaspace Neon 12'"
     state: present
 
 - name: Set GNOME Terminal font to MonoLisa
   community.general.dconf:
     key: /org/gnome/terminal/legacy/profiles:/:{{ gnome_terminal_profile.stdout }}/font
-    value: "'MonoLisa 11'"
+    value: "'Monaspace Neon 11'"
     state: present
 
 - name: Disable gnome-keyring-ssh
