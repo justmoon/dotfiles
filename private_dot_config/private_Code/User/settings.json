@@ -1,5 +1,4 @@
 {
-  "editor.lineNumbers": "relative",
   "files.autoSave": "onWindowChange",
   "keyboard.dispatch": "keyCode",
   "macros.list": {
