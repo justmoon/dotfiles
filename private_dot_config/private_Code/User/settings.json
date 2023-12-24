@@ -86,7 +86,7 @@
   "workbench.layoutControl.type": "menu",
   "workbench.activityBar.location": "hidden",
   "editor.rulers": [80, 120],
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0,
   "window.titleBarStyle": "custom",
   "unocss.underline": false,
   "editor.stickyScroll.enabled": true,
@@ -99,17 +99,14 @@
     "<C-p>": false
   },
   "vim.normalModeKeyBindingsNonRecursive": [
-    // Search symbols
     {
       "before": ["g", "s"],
       "commands": ["workbench.action.showAllSymbols"]
     },
-    // Find references
     {
       "before": ["g", "r"],
       "commands": ["editor.action.referenceSearch.trigger"]
     },
-    // Go to type definition
     {
       "before": ["g", "y"],
       "commands": ["editor.action.goToTypeDefinition"]
@@ -128,4 +125,10 @@
   ],
   "shellformat.flag": "-i 2 -ci -bn",
   "shellformat.useEditorConfig": true,
+  "typescript.preferences.importModuleSpecifier": "project-relative",
+  "typescript.preferences.importModuleSpecifierEnding": "minimal",
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
+  "typescript.format.semicolons": "remove",
+  "workbench.tree.enableStickyScroll": true,
+  "terminal.integrated.stickyScroll.enabled": true
 }
