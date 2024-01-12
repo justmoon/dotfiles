@@ -58,6 +58,12 @@ function project.startup(wezterm, workspace_name)
 	run_tab:set_title("run")
 	run_pane:send_text("rerun --suspend pnpm start\r")
 
+	-- build tab
+	local build_tab, build_pane, _ = project_window:spawn_tab({})
+
+	build_tab:set_title("build")
+	build_pane:send_text("rerun --suspend pnpm build\r")
+
 	mux.set_active_workspace(workspace_name)
 	sh_pane:activate()
 end
